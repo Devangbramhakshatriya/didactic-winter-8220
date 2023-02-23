@@ -1,10 +1,23 @@
-.mainNavbar{
-    background-color: rgb(255, 255, 227);
-}
+
 
 .UpperNavbar {
     height: 36px;
-    
+    background-color: rgb(255, 255, 222);
+}
+
+.imageMens {
+    width: 34vw;
+    height: fit-content;
+    padding: 20px;
+}
+
+.LowerNavCont{
+    align-items: center;
+    margin-left: 15%;
+}
+.LowerNavbar {
+    height: 44px;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 15px -3px, rgba(0, 0, 0, 0.05) 0px 4px 6px -2px;
 }
 
 .TopText {
