@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
-import { getProduct } from '../../Redux/action';
+import { getProduct } from '../../Redux/ProductRedux/action';
 import ProductCard from './ProductCard';
 
 const ProductList = () => {
