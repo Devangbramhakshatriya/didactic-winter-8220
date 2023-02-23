@@ -16,7 +16,7 @@ export default function Product() {
              <Link to='/'>Home</Link> {">"} Men all cothing
           </div>
       </div>
-      <div style={{display:"flex"}}>
+      <div style={{display:"flex", float:"left"}}>
         <Filter/>
         <Sort/>
       </div>
