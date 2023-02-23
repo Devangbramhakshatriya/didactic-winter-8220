@@ -1,5 +1,6 @@
 import { GET_PRODUCT_SUCCESS, PRODUCT_FAILURE, PRODUCT_REQUEST} from './actiontypes'
 
+
 const initialState={
     isLoading:false,
     product:[],

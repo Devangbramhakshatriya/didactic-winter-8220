@@ -30,7 +30,7 @@ const ProductList = () => {
           ? products.map((el) => {
               return <ProductCard key={el.id} product={el} />;
             })
-          : <h2>"Loading..."</h2>}
+          : <h1>"Loading..."</h1>}
       </div>
     );
   };
