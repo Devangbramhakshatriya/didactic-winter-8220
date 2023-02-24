@@ -1,6 +1,9 @@
-import {Button, Heading, useDisclosure,Modal,
-  ModalBody,ModalCloseButton,ModalContent,ModalOverlay,
-  ModalHeader, FormLabel, Checkbox } from '@chakra-ui/react';
+import {Button, Heading, useDisclosure,Drawer,
+  DrawerBody,DrawerCloseButton ,DrawerContent,DrawerOverlay,
+  DrawerHeader, FormLabel, Checkbox, Select,RangeSlider,RangeSliderFilledTrack,
+  RangeSliderTrack,RangeSliderThumb, Input} from '@chakra-ui/react';
+import choose from './image/pallate.png'
+import {BiChevronDown} from 'react-icons/bi'
 import React, { useEffect, useState } from 'react'
 import { useSearchParams } from 'react-router-dom';
 
@@ -9,6 +12,9 @@ const Filter = () => {
     const [searchParams, setSearchParams]=useSearchParams();
     const initialState=searchParams.getAll("category");
     const [category,setCategory]=useState(initialState || []);
+    const initialorder=searchParams.getAll("order");
+    const [order,setOrder]=useState(initialorder || '');
+    const btnRef = React.useRef()
 
     const handleChange=(e)=>{
         let newCategory=[...category];
@@ -22,61 +28,188 @@ const Filter = () => {
         setCategory(newCategory);
        console.log(category);
     }
-   
+    
+    const handleSort=(e)=>{
+      console.log(e.target.value);
+      setOrder(e.target.value);
+    }
+
+    const handleVisible=()=>{
+      let silde=document.getElementById("slide");
+      if(silde.style.visibility=="visible"){
+        silde.style.visibility="hidden";
+        silde.style.display="none";
+      }else if(silde.style.visibility=="hidden"){
+        silde.style.visibility="visible";
+        silde.style.display="block";
+      }
+    }
     
     useEffect(()=>{
       let params={
         category,
       }
+      order && (params.order=order);
       setSearchParams(params);
-    },[category])
+    },[category,order])
+
   return (
    <>
-   <Button onClick={onOpen}>Filter</Button>
-   <Modal isOpen={isOpen} onClose={onClose}>
-   <ModalOverlay />
-    <ModalContent>
-    <ModalHeader>Filters:</ModalHeader>
-    <ModalCloseButton />
-    <ModalBody>
-        <Checkbox type="checkbox" value="Shirt" onChange={handleChange} checked={category.includes("Shirt")}/>
-        <FormLabel>Shirt</FormLabel>
+   <Button onClick={onOpen} bg='none' fontSize='14px' variant='unstyled' display='flex'>Filter<BiChevronDown/></Button>
+   <Drawer size={'sm'} isOpen={isOpen} placement='left' onClose={onClose} finalFocusRef={btnRef}>
+   <DrawerOverlay/>
+    <DrawerContent >
+    <DrawerHeader  fontSize={'26px'}>Filters</DrawerHeader>
+    <DrawerCloseButton />
+    <DrawerBody >
+      <div>
+      <Button onClick={handleVisible} width="100%" fontSize='14px' bg='none' variant='unstyled' gap='90%' display='flex' color={'#000000'}>Price <BiChevronDown/> </Button>
+      <div id="slide" style={{visibility:'visible',margin:"20px 0px 20px 0px"}}>
+      <RangeSlider aria-label={['min', 'max']} defaultValue={[0, 100]} colorScheme='blackAlpha'>
+        <RangeSliderTrack>
+          <RangeSliderFilledTrack />
+            </RangeSliderTrack>
+          <RangeSliderThumb index={0} />
+        <RangeSliderThumb index={1} />
+      </RangeSlider>
+      <div style={{display:"flex", gap:"10px",margin:"20px 0px 20px 0px"}}>
+        <Input placeholder='₹'/><span style={{textAlign:"center", paddingTop:"10px"}}>To</span><Input placeholder='₹'/>
+      </div>
+      </div>
+      </div>
+      <Button width="100%" bg='none' variant='unstyled' fontSize='14px' gap='75%' display='flex' color={'#000000'}>Product Type <BiChevronDown/> </Button>
+      <div style={{display:"flex", gap:"10px"}}>
+        <Checkbox value="Shirt" onChange={handleChange} checked={category.includes("Shirt")}/>
+        <FormLabel color={'#000000'} fontWeight='400' paddingTop='8px'>Shirt</FormLabel>
+      </div>
+
+      <div style={{display:"flex", gap:"10px"}}>
+        <Checkbox value="Hoodie" onChange={handleChange} checked={category.includes("Hoodie")}/>
+        <FormLabel color={'#000000'} fontWeight='400' paddingTop='8px'>Hoodie</FormLabel>
+      </div>
       
       
-        <Checkbox type="checkbox" value="Hoodie" onChange={handleChange} checked={category.includes("Hoodie")}/>
-        <FormLabel>Hoodie</FormLabel>
+      <div style={{display:"flex", gap:"10px"}}>
+        <Checkbox value="Joggers" onChange={handleChange} checked={category.includes("Joggers")}/>
+        <FormLabel color={'#000000'} fontWeight='400' paddingTop='8px'>Joggers</FormLabel>
+      </div>
       
       
-        <Checkbox type="checkbox" value="Joggers" onChange={handleChange} checked={category.includes("Joggers")}/>
-        <FormLabel>Joggers</FormLabel>
+      <div style={{display:"flex", gap:"10px"}}>
+        <Checkbox value="Jackets" onChange={handleChange} checked={category.includes("Jackets")}/>
+        <FormLabel color={'#000000'} fontWeight='400' paddingTop='8px'>Jackets</FormLabel>
+      </div>
       
       
-        <Checkbox type="checkbox" value="Jackets" onChange={handleChange} checked={category.includes("Jackets")}/>
-        <FormLabel>Jackets</FormLabel>
+      <div style={{display:"flex", gap:"10px"}}>
+        <Checkbox value="sweatshirts" onChange={handleChange} checked={category.includes("sweatshirts")}/>
+        <FormLabel color={'#000000'} fontWeight='400' paddingTop='8px'>Sweatshirts</FormLabel>
+      </div>
       
       
-        <Checkbox type="checkbox" value="sweatshirts" onChange={handleChange} checked={category.includes("sweatshirts")}/>
-        <FormLabel>Sweatshirts</FormLabel>
+      <div style={{display:"flex", gap:"10px"}}>
+        <Checkbox value="Shoes" onChange={handleChange} checked={category.includes("Shoes")}/>
+        <FormLabel color={'#000000'} fontWeight='400' paddingTop='8px'>Shoes</FormLabel>
+      </div>
       
       
-        <Checkbox type="checkbox" value="Shoes" onChange={handleChange} checked={category.includes("Shoes")}/>
-        <FormLabel>Shoes</FormLabel>
+      <div style={{display:"flex", gap:"10px"}}>
+        <Checkbox value="outwears" onChange={handleChange} checked={category.includes("outwears")}/> 
+        <FormLabel color={'#000000'} fontWeight='400' paddingTop='8px'>Outwears</FormLabel>
+      </div>
       
       
-        <Checkbox type="checkbox" value="outwears" onChange={handleChange} checked={category.includes("outwears")}/> 
-        <FormLabel>Outwears</FormLabel>
+      <div style={{display:"flex", gap:"10px"}}>
+        <Checkbox value="Pants" onChange={handleChange} checked={category.includes("Pants")}/>
+        <FormLabel color={'#000000'} fontWeight='400' paddingTop='8px'>Pants</FormLabel>
+      </div>
       
       
-        <Checkbox type="checkbox" value="Pants" onChange={handleChange} checked={category.includes("Pants")}/>
-        <FormLabel>Pants</FormLabel>
-      
-      
-        <Checkbox type="checkbox" value="T-Shirt" onChange={handleChange} checked={category.includes("T-Shirt")}/>
-        <FormLabel>T-Shirt</FormLabel>
-      
-    </ModalBody>
-    </ModalContent>
-    </Modal>
+      <div style={{display:"flex", gap:"10px"}}>
+        <Checkbox value="T-Shirt" onChange={handleChange} checked={category.includes("T-Shirt")}/>
+        <FormLabel color={'#000000'} fontWeight='400' paddingTop='8px'>T-Shirt</FormLabel>
+      </div>
+
+      <div style={{display:"flex", gap:"10px"}}>
+        <Checkbox />
+        <FormLabel color={'#000000'} fontWeight='400' paddingTop='8px'>Sandals</FormLabel>
+      </div>
+
+      <div style={{display:"flex", gap:"10px"}}>
+        <Checkbox />
+        <FormLabel color={'#000000'} fontWeight='400' paddingTop='8px'>Shorts</FormLabel>
+      </div>
+
+      <div style={{display:"flex", gap:"10px"}}>
+        <Checkbox />
+        <FormLabel color={'#000000'} fontWeight='400' paddingTop='8px'>Slides</FormLabel>
+      </div>
+
+      <div style={{display:"flex", gap:"10px"}}>
+        <Checkbox />
+        <FormLabel color={'#000000'} fontWeight='400' paddingTop='8px'>Bags</FormLabel>
+      </div>
+
+      <div style={{display:"flex", gap:"10px"}}>
+        <Checkbox />
+        <FormLabel color={'#000000'} fontWeight='400' paddingTop='8px'>Joggers</FormLabel>
+      </div>
+
+      <div style={{display:"flex", gap:"10px"}}>
+        <Checkbox />
+        <FormLabel color={'#000000'} fontWeight='400' paddingTop='8px'>Coats</FormLabel>
+      </div>
+
+      <div style={{display:"flex", gap:"10px"}}>
+        <Checkbox />
+        <FormLabel color={'#000000'} fontWeight='400' paddingTop='8px'>Hats</FormLabel>
+      </div>
+
+      <div style={{display:"flex", gap:"10px"}}>
+        <Checkbox />
+        <FormLabel color={'#000000'} fontWeight='400' paddingTop='8px'>Sneakers</FormLabel>
+      </div>
+
+      <div style={{display:"flex", fontWeight:"600", gap:"90%", margin:"30px 0px 30px 0px"}}>
+        <p>Size</p>
+        <BiChevronDown/>
+      </div>
+
+      <div style={{display:"flex",fontWeight:"600", gap:"90%", margin:"30px 0px 30px 0px"}}>
+        <p>Brand</p>
+        <BiChevronDown/>
+      </div>
+
+      <div style={{display:"flex",fontWeight:"600", gap:"90%", margin:"30px 0px 30px 0px"}}>
+        <p>Availability</p>
+        <BiChevronDown/>
+      </div>
+
+      <div style={{display:"flex",fontWeight:"600", gap:"90%", margin:"30px 0px 30px 0px"}}>
+        <p>Gender</p>
+        <BiChevronDown/>
+      </div>
+
+      <div>
+        <p style={{fontWeight:"600"}}>
+          Color
+        </p>
+       <img src={choose} alt="" />
+      </div>
+    </DrawerBody>
+    </DrawerContent>
+    </Drawer>
+    <div style={{padding:"8px", outline:"none", marginLeft:"7px", cursor:"pointer",border:"none"}}>
+      <Select onChange={handleSort} variant='unstyled' fontSize='14px' fontWeight={500} outline='none' border={"none"} cursor={'pointer'}>
+        <option style={{cursor:"pointer"}} name='order' value={''} order={order===''} outline='none'>Best Selling</option>
+        <option style={{cursor:"pointer"}} name='order' value={'asc'} order={order==='asc'} outline='none'>Price, Low to High</option>
+        <option style={{cursor:"pointer"}} name='order' value={'desc'} order={order==='desc'} outline='none'>Price, High to Low</option>
+        <option style={{cursor:"pointer"}} value="">Alphabetically, A-Z</option>
+        <option style={{cursor:"pointer"}} value="">Alphabetically, Z-A</option>
+        <option style={{cursor:"pointer"}} value="">Date,Old to New</option>
+        <option style={{cursor:"pointer"}} value="">Date,New to Old</option>
+      </Select>
+    </div>
     </>
   )
 }

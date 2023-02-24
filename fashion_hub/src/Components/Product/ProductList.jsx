@@ -1,3 +1,4 @@
+import { Button, Heading,Spinner } from '@chakra-ui/react';
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { useLocation, useSearchParams } from 'react-router-dom';
@@ -13,32 +14,28 @@ const ProductList = () => {
 
   const dispatch = useDispatch();
 
-  const obj = {
-    params: {}
-  };
+  let obj={
+    params:{
+        category:searchParams.getAll("category"),
+        _sort:searchParams.getAll('order') && 'price',
+        _order:searchParams.get("order"),
+    }
+}
 
-  const category = searchParams.getAll("category");
-  if (category.length > 0) {
-    obj.params.category = category;
-  }
-
-  const order = searchParams.get("order");
-  if (order) {
-    obj.params._sort = 'price';
-    obj.params._order = order;
-  }
 
   useEffect(() => {
     dispatch(getProduct(obj));
   }, [location.search]);
 
   return (
+    <>
     <div
       style={{
         display: "grid",
         gridTemplateColumns: "repeat(auto-fill, minmax(300px, max-content))",
         gridTemplateRows: "repeat(auto-fill)",
-        gridGap: "10px 0px",
+        justifyContent:"center",
+        gridGap: "20px 0px",
         margin:"auto"
       }}
     >
@@ -46,8 +43,27 @@ const ProductList = () => {
         ? products.map((el) => {
           return <ProductCard key={el.id} product={el} />;
         })
-        : <h1>"Loading..."</h1>}
+        : <div style={{display:"flex"}}>
+          <Heading>Loading...</Heading>
+          <Spinner
+        margin='auto'
+        thickness='4px'
+        speed='0.65s'
+        emptyColor='gray.200'
+        color='blue.500'
+        size='xl'
+      />
+        </div>}
     </div>
+    <div style={{ display: "flex",alignItems: "center",justifyContent: "center",marginTop: "20px", gap:"10px"}}>
+      <Button borderRadius={"50%"}>1</Button>
+      <Button variant={'unstyled'}>2</Button>
+      <Button variant={'unstyled'}>3</Button>
+      <Button variant={'unstyled'}>...</Button>
+      <Button variant={'unstyled'}>13</Button>
+      <Button variant={'unstyled'}>{">>"}</Button>
+    </div>
+    </>
   );
 };
 
