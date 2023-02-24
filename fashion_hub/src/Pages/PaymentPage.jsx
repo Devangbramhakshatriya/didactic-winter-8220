@@ -74,6 +74,7 @@ const PaymentPage = () => {
       </div>
     </div>
     </div>
+    
   )
 }
 
