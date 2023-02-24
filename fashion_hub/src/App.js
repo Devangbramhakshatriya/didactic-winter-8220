@@ -4,6 +4,7 @@ import Navbar from './Components/Navbar/Navbar';
 import Home from './Components/Home/Pages/Home';
 import Admin from './Pages/Admin';
 import MainRoutes from './Pages/MainRoutes';
+// import PaymentPage from './Pages/PaymentPage';
 
 
 function App() {
@@ -14,6 +15,7 @@ function App() {
         {/* <Admin/>
         <Product/> */}
         <MainRoutes/>
+        {/* <PaymentPage/> */}
       </div>
   );
 }
