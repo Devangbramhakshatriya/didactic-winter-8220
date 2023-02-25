@@ -16,7 +16,7 @@ function App() {
         {/* <Admin/>
         <Product/> */}
         {/* <MainRoutes/> */}
-        <PaymentPage/>
+        {/* <PaymentPage/> */}
 
         <Footer/>
 
