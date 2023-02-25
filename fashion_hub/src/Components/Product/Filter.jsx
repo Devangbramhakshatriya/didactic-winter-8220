@@ -63,7 +63,7 @@ const Filter = () => {
     <DrawerCloseButton />
     <DrawerBody >
       <div>
-      <Button onClick={handleVisible} width="100%" fontSize='14px' bg='none' variant='unstyled' gap='90%' display='flex' color={'#000000'}>Price <BiChevronDown/> </Button>
+      <Button onClick={handleVisible} width="100%" fontSize='14px' bg='none' variant='unstyled' gap="85%" display='flex' color={'#000000'}>Price <BiChevronDown/> </Button>
       <div id="slide" style={{visibility:'visible',margin:"20px 0px 20px 0px"}}>
       <RangeSlider aria-label={['min', 'max']} defaultValue={[0, 100]} colorScheme='blackAlpha'>
         <RangeSliderTrack>
@@ -77,7 +77,7 @@ const Filter = () => {
       </div>
       </div>
       </div>
-      <Button width="100%" bg='none' variant='unstyled' fontSize='14px' gap='75%' display='flex' color={'#000000'}>Product Type <BiChevronDown/> </Button>
+      <Button width="100%" bg='none' variant='unstyled' fontSize='14px' gap='73%' display='flex' color={'#000000'}>Product Type <BiChevronDown/> </Button>
       <div style={{display:"flex", gap:"10px"}}>
         <Checkbox value="Shirt" onChange={handleChange} checked={category.includes("Shirt")}/>
         <FormLabel color={'#000000'} fontWeight='400' paddingTop='8px'>Shirt</FormLabel>
@@ -170,27 +170,27 @@ const Filter = () => {
         <FormLabel color={'#000000'} fontWeight='400' paddingTop='8px'>Sneakers</FormLabel>
       </div>
 
-      <div style={{display:"flex", fontWeight:"600", gap:"90%", margin:"30px 0px 30px 0px"}}>
+      <div style={{display:"flex", fontWeight:"600", gap:"85%", margin:"30px 0px 30px 0px", cursor:"pointer"}}>
         <p>Size</p>
         <BiChevronDown/>
       </div>
 
-      <div style={{display:"flex",fontWeight:"600", gap:"90%", margin:"30px 0px 30px 0px"}}>
+      <div style={{display:"flex",fontWeight:"600", gap:"81%", margin:"30px 0px 30px 0px", cursor:"pointer"}}>
         <p>Brand</p>
         <BiChevronDown/>
       </div>
 
-      <div style={{display:"flex",fontWeight:"600", gap:"90%", margin:"30px 0px 30px 0px"}}>
+      <div style={{display:"flex",fontWeight:"600", gap:"71%", margin:"30px 0px 30px 0px", cursor:"pointer"}}>
         <p>Availability</p>
         <BiChevronDown/>
       </div>
 
-      <div style={{display:"flex",fontWeight:"600", gap:"90%", margin:"30px 0px 30px 0px"}}>
+      <div style={{display:"flex",fontWeight:"600", gap:"78%", margin:"30px 0px 30px 0px", cursor:"pointer"}}>
         <p>Gender</p>
         <BiChevronDown/>
       </div>
 
-      <div>
+      <div style={{cursor:"pointer"}}>
         <p style={{fontWeight:"600"}}>
           Color
         </p>
@@ -200,14 +200,14 @@ const Filter = () => {
     </DrawerContent>
     </Drawer>
     <div style={{padding:"8px", outline:"none", marginLeft:"7px", cursor:"pointer",border:"none"}}>
-      <Select onChange={handleSort} variant='unstyled' fontSize='14px' fontWeight={500} outline='none' border={"none"} cursor={'pointer'}>
-        <option style={{cursor:"pointer"}} name='order' value={''} order={order===''} outline='none'>Best Selling</option>
-        <option style={{cursor:"pointer"}} name='order' value={'asc'} order={order==='asc'} outline='none'>Price, Low to High</option>
-        <option style={{cursor:"pointer"}} name='order' value={'desc'} order={order==='desc'} outline='none'>Price, High to Low</option>
-        <option style={{cursor:"pointer"}} value="">Alphabetically, A-Z</option>
-        <option style={{cursor:"pointer"}} value="">Alphabetically, Z-A</option>
-        <option style={{cursor:"pointer"}} value="">Date,Old to New</option>
-        <option style={{cursor:"pointer"}} value="">Date,New to Old</option>
+      <Select onChange={handleSort} variant='unstyled' fontSize='14px' fontWeight={600} outline='none' border={"none"} cursor={'pointer'}>
+        <option style={{cursor:"pointer", fontWeight:'600'}}  name='order' value={''} order={order===''} outline='none'>Best Selling</option>
+        <option style={{cursor:"pointer", fontWeight:'600'}}  name='order' value={'asc'} order={order==='asc'} outline='none'>Price, Low to High</option>
+        <option style={{cursor:"pointer", fontWeight:'600'}}  name='order' value={'desc'} order={order==='desc'} outline='none'>Price, High to Low</option>
+        <option style={{cursor:"pointer", fontWeight:'600'}}  value="">Alphabetically, A-Z</option>
+        <option style={{cursor:"pointer", fontWeight:'600'}}  value="">Alphabetically, Z-A</option>
+        <option style={{cursor:"pointer", fontWeight:'600'}}  value="">Date,Old to New</option>
+        <option style={{cursor:"pointer", fontWeight:'600'}}  value="">Date,New to Old</option>
       </Select>
     </div>
     </>

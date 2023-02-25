@@ -12,7 +12,7 @@ let initialState={
     discount:"",
     category:"",
 }
-const Admin = () => {
+const Admin=()=>{
   const [product, setproduct]=useState(initialState);
   const dispatch=useDispatch();
   const handleChange=(e)=>{

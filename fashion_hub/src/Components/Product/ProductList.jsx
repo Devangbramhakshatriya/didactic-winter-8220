@@ -22,7 +22,6 @@ const ProductList = () => {
     }
 }
 
-
   useEffect(() => {
     dispatch(getProduct(obj));
   }, [location.search]);

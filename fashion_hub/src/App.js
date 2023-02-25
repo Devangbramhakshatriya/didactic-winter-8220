@@ -5,21 +5,21 @@ import Home from './Components/Home/Pages/Home';
 import Admin from './Pages/Admin';
 import MainRoutes from './Pages/MainRoutes';
 import Footer from './Components/Footer/Footer';
-// import PaymentPage from './Pages/PaymentPage'
+import PaymentPage from './Pages/PaymentPage'
 
 
 function App() {
   return (
       <div className="App">
         <Navbar/>
-        <Home/>
-        {/* <Admin/>
-        <Product/> */}
-        {/* <MainRoutes/> */}
-        <PaymentPage/>
-
+        {/* <Home/> */}
+        {/* <Navbar/> */}
+         {/* <Admin/> */}
+        {/* <Product/>  */}
+        <MainRoutes/>
+        
+        {/* <PaymentPage/> */}
         <Footer/>
-
       </div>
   );
 }
