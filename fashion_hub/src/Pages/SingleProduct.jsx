@@ -12,6 +12,7 @@ import ProductCard from "../Components/Product/ProductCard";
 import { Box, Button } from "@chakra-ui/react";
 
 const initialValue=1;
+
 export default function SingleProduct() {
   const [count, setCount] = useState(initialValue);
   const { id } = useParams();
