@@ -59,6 +59,7 @@ function Home() {
                             <ProductCart key={e.id} image={e.image} image2={e.image2} price={e.price} title={e.title} />
                         ))
                     }
+                    
                 </SimpleGrid>
             </Box>
         </Box>
