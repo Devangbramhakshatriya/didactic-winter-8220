@@ -62,6 +62,7 @@ export default function SingleProduct() {
          <div style={{margin:"20px 0px 20px 0px"}}>
          <p style={{color:"", fontSize:"14px", lineHeight:"21px",display:"inline-flex"}}><FaEye style={{margin:"2px 5px 0px 5px",fontSize:"18px"}}/> {n} people are viewing this right now</p>
          </div>
+         
          <p><span style={{fontWeight:"600"}}>Size</span>:M</p>
          <img style={{cursor:"pointer", margin:"10px 0px 20px 0px"}} src={size} alt="" />
          <div>
