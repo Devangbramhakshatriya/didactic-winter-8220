@@ -12,7 +12,7 @@ import Footer from './Components/Footer/Footer';
 
 // import Loginn from './Components/Login/Login';
 
-import Navbar from './Components/Product/Navbar';
+// import Navbar from './Components/Product/Navbar';
 
 
 // import PaymentPage from './Pages/PaymentPage'
@@ -22,7 +22,7 @@ function App() {
   return (
       <div className="App">
 
-
+        <Navbar/>
         {/* <Login/> */}
         {/* <Signup/> */}
 
