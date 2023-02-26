@@ -6,6 +6,7 @@ import Admin from './Pages/Admin';
 import MainRoutes from './Pages/MainRoutes';
 import Footer from './Components/Footer/Footer';
 import Cart from './Pages/Cart';
+import HamburgerMenu from './Components/Navbar/Hamburger';
 // import Login from './Components/Login/SignIn';
 // import Signup from './Components/Signup/Signup';
 
@@ -24,6 +25,7 @@ function App() {
       <div className="App">
 
         <Navbar/>
+        <HamburgerMenu/>
         {/* <Login/> */}
         {/* <Signup/> */}
         
@@ -32,7 +34,7 @@ function App() {
         {/* <Admin/>
         <Product/> */}
         
-        {/* <MainRoutes/> */}
+        <MainRoutes/>
         {/* <PaymentPage/> */}
 
         <Footer/>

@@ -4,6 +4,7 @@ import Home from '../Components/Home/Pages/Home'
 import Admin from './Admin'
 import Cart from './Cart'
 import Edit from './Edit'
+import PaymentPage from './PaymentPage'
 import Product from './Product'
 import SingleProduct from './SingleProduct'
 
@@ -15,6 +16,7 @@ const MainRoutes = () => {
       <Route path='/product/:id/edit' element={<Edit/>}/>
       <Route path='/cart' element={<Cart/>}/>
       <Route path={'/product/:id'} element={<SingleProduct/>}/>
+      <Route path='/payment' element={<PaymentPage/>}/>
       <Route path='*' element={<h2>404 Page Not Found!</h2>}/>
     </Routes>
 }

@@ -14,8 +14,11 @@ import {
   AlertTitle,
   AlertDescription,
 } from '@chakra-ui/react'
+import { useNavigate } from 'react-router-dom';
+
 
 const PaymentPage = () => {
+  const navigate=useNavigate()
     const { isOpen, onOpen, onClose } = useDisclosure()
   const cancelRef = React.useRef()
 
@@ -35,7 +38,11 @@ const PaymentPage = () => {
   } 
   const handleSubmit = (e) => {
     e.preventDefault();
-    
+    setValue({ number:"",
+    month:"",
+    year:"",
+    cvv:"",
+    name:""})
     //  if(value.number.length>0 || value.month.length>0 || value.year.length>0 || value.cvv.length>0 || value.name.length>0 ){
        onOpen()
     //  }
