@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import '../payment.css';
 import {
   AlertDialog,
@@ -18,6 +18,28 @@ import {
 const PaymentPage = () => {
     const { isOpen, onOpen, onClose } = useDisclosure()
   const cancelRef = React.useRef()
+
+  const [value, setValue] = React.useState({
+    number:"",
+    month:"",
+    year:"",
+    cvv:"",
+    name:""
+  })
+  const handleChange = (event) =>{
+    // setValue(event.target.value0)
+    setValue(event.target.value)
+    // setValue1(event.target.value1)
+    // setValue2(event.target.value2)
+    // setValue3(event.target.value3)
+  } 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    
+    //  if(value.number.length>0 || value.month.length>0 || value.year.length>0 || value.cvv.length>0 || value.name.length>0 ){
+       onOpen()
+    //  }
+  };
   return (
     <div>
         <div id="maincontainer">
@@ -45,27 +67,32 @@ const PaymentPage = () => {
               </div>
               <div>
                 <p>Card Number</p>
-                <input type="number" placeholder="XXXX XXXX XXXX XXXX" />
+                <input type="number" placeholder="XXXX XXXX XXXX XXXX" value={value.number}
+            onChange={handleChange} />
               </div>
               <div>
                 <p>Expiry Month</p>
-                <input type="number" placeholder="XX" />
+                <input type="number" placeholder="XX" value={value.month}
+            onChange={handleChange} />
               </div>
               <div>
                 <p>Expiry Year</p>
-                <input type="number" placeholder="XXXX" />
+                <input type="number" placeholder="XXXX" value={value.year}
+            onChange={handleChange}/>
               </div>
               <div>
               <p>CVV</p>
-              <input type="number" placeholder="XXX" />
+              <input type="number" placeholder="XXX" value={value.cvv}
+            onChange={handleChange}/>
             </div>
               <div>
-                <input type="text" placeholder="Name on Card" />
+                <input type="text" placeholder="Name on Card" value={value.name}
+            onChange={handleChange}/>
               </div>
               <div>
                 {/* <a href=""><button>PAY NOW</button></a> */}
     <>
-      <Button colorScheme='blackAlpha' size='lg'variant='solid' onClick={onOpen}>
+      <Button colorScheme='blackAlpha' size='lg'variant='solid' onClick={handleSubmit}>
       PAY NOW
       </Button>
 
