@@ -1,7 +1,23 @@
 import React from 'react'
 import '../payment.css';
+import {
+  AlertDialog,
+  AlertDialogBody,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogContent,
+  AlertDialogOverlay,
+  useDisclosure,
+  Button,
+  Alert,
+  AlertIcon,
+  AlertTitle,
+  AlertDescription,
+} from '@chakra-ui/react'
 
 const PaymentPage = () => {
+    const { isOpen, onOpen, onClose } = useDisclosure()
+  const cancelRef = React.useRef()
   return (
     <div>
         <div id="maincontainer">
@@ -18,7 +34,7 @@ const PaymentPage = () => {
       </div>
       <div>
         <div id="paymentdetails">
-          <div id="creditcart" onclick="creditcart()">
+          <div id="creditcart" onclick="creditcart()" style={{marginTop:"40px"}} >
             {/* <span class="material-icons iconssize"> credit_card </span> */}
             <p class="texticons">CREDIT CARD</p>
           </div>
@@ -47,15 +63,51 @@ const PaymentPage = () => {
                 <input type="text" placeholder="Name on Card" />
               </div>
               <div>
-                <a href=""><button>PAY NOW</button></a>
+                {/* <a href=""><button>PAY NOW</button></a> */}
+    <>
+      <Button colorScheme='blackAlpha' size='lg'variant='solid' onClick={onOpen}>
+      PAY NOW
+      </Button>
+
+      <AlertDialog
+        isOpen={isOpen}
+        leastDestructiveRef={cancelRef}
+        onClose={onClose}
+      >
+        <AlertDialogOverlay>
+          <AlertDialogContent>
+            <Alert
+  status='success'
+  variant='subtle'
+  flexDirection='column'
+  alignItems='center'
+  justifyContent='center'
+  textAlign='center'
+  height='200px'
+>
+  <AlertIcon boxSize='40px' mr={0} />
+  <AlertTitle mt={4} mb={1} fontSize='lg'>
+    Order Placed Successffully!
+  </AlertTitle>
+  <AlertDescription maxWidth='sm'>
+    Thanks for giving your order. Our team will get back to you soon.
+  </AlertDescription>
+</Alert>
+          </AlertDialogContent>
+        </AlertDialogOverlay>
+      </AlertDialog>
+    </>
+
+
+
               </div>
             </div>
           </div>
-          <div id="debitcart" onclick="debitcart()">
+          <div id="debitcart" onclick="debitcart()"  style={{marginTop:"20px"}}>
             {/* <span class="material-icons iconssize"> payments </span> */}
             <p class="texticons">DEBIT CARD</p>
           </div>
-          <div>
+          <div style={{marginTop:"10px"}}>
             {/* <span class="material-icons iconssize"> toll </span> */}
 
             <p class="texticons">NET BANKING</p>
