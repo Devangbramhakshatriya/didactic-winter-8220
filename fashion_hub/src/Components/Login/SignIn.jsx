@@ -21,6 +21,7 @@ import { SetUserDataAfterLogin } from "../Auth/auth.action";
 import { useDispatch } from "react-redux";
 import Navbar from "../Navbar/Navbar";
 import HamburgerMenu from "../Navbar/Hamburger";
+import {Link as RouterLink} from "react-router-dom"
 const SignIn = () => {
   const toast = useToast();
 
@@ -57,7 +58,7 @@ const SignIn = () => {
             formData.email === "admin@admin.com" &&
             formData.password === "123456"
           ) {
-            navigateTo("/adminPage");
+            navigateTo("/adminpage");
           } else if (login) {
             dispatch(SetUserDataAfterLogin(login));
             toast({
@@ -161,9 +162,11 @@ const SignIn = () => {
             <Stack pt={6}>
               <Text align={"center"}>
                 Don't have a account?{" "}
+                <RouterLink to="/signup">
                 <Link color={"blue.400"} onClick={signUppage}>
                   Signup
                 </Link>
+                </RouterLink>
               </Text>
             </Stack>
           </Stack>

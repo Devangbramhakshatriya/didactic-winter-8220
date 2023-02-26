@@ -27,6 +27,7 @@ import { ViewIcon, ViewOffIcon } from "@chakra-ui/icons";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { AddUser } from "../Auth/auth.action";
+import {Link as RouterLink} from "react-router-dom"
 
 const SignUp = () => {
   const toast = useToast();
@@ -186,9 +187,11 @@ const SignUp = () => {
             <Stack pt={6}>
               <Text align={"center"}>
                 Already a user?{" "}
+                <RouterLink to="\">
                 <Link color={"blue.400"} onClick={() => GoTo("/SignIn")}>
                   SignIn
                 </Link>
+                </RouterLink>
               </Text>
             </Stack>
           </Stack>

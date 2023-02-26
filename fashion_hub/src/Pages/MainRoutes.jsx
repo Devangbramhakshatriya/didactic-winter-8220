@@ -2,6 +2,7 @@ import React from 'react'
 import { Route, Routes } from 'react-router-dom'
 import Home from '../Components/Home/Pages/Home'
 import SignIn from '../Components/Login/SignIn'
+import SignUp from '../Components/Signup/Signup'
 import Admin from './Admin'
 import Cart from './Cart'
 import Edit from './Edit'
@@ -13,7 +14,7 @@ const MainRoutes = () => {
   return <Routes>
       <Route path='/' element={<Home/>}/>
       <Route path='/product' element={<Product/>}/>
-      <Route path='/admin' element={<Admin/>}/>
+      <Route path='/adminpage' element={<Admin/>}/>
       <Route path='/product/:id/edit' element={<Edit/>}/>
       <Route path='/cart' element={<Cart/>}/>
       <Route path='/signin' element={<SignIn/>}/>
@@ -21,6 +22,7 @@ const MainRoutes = () => {
       <Route path='/payment' element={<PaymentPage/>}/>
       <Route path='*' element={<h2>404 Page Not Found!</h2>}/>
       <Route path='/buynow' element={<PaymentPage/>}/>
+      <Route path="/signup" element={<SignUp/>}/>
     </Routes>
 }
 
