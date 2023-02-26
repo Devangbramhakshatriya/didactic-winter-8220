@@ -5,6 +5,7 @@ import Home from './Components/Home/Pages/Home';
 import Admin from './Pages/Admin';
 import MainRoutes from './Pages/MainRoutes';
 import Footer from './Components/Footer/Footer';
+import Cart from './Pages/Cart';
 // import Login from './Components/Login/SignIn';
 // import Signup from './Components/Signup/Signup';
 
@@ -25,7 +26,6 @@ function App() {
         <Navbar/>
         {/* <Login/> */}
         {/* <Signup/> */}
-
         
         {/* <Login/> */}
 

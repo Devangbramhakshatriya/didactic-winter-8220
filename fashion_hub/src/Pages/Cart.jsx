@@ -5,6 +5,7 @@ import {FaShippingFast} from "react-icons/fa"
 import {RiCouponLine} from "react-icons/ri"
 import {FiChevronRight} from "react-icons/fi"
 import { total } from "./CartCard";
+import { useEffect, useState } from "react";
 const breackpoints = {
     base: "420px",
     sm: "550px",
@@ -16,8 +17,54 @@ const breackpoints = {
 const theme = extendTheme({ breackpoints })
 
 function Cart(){
-    const cartData=JSON.parse(localStorage.getItem("cart"))||[]
-    console.log(total,"iii")    
+    
+    const [cartData,setDartData]=useState([])
+    useEffect(()=>{
+    const cartquantity=JSON.parse(localStorage.getItem("cart"))||[]
+        setDartData(cartquantity)
+    },[])
+    const [Total,setTotal]=useState(0)
+        let t=cartData.reduce((acc,el)=>{
+            return acc+(el.quantity*el.price)
+        },0)
+        console.log(t)
+
+        const handleIncrement=(id)=>{
+            
+            let d=cartData.filter((el)=>{
+                if(id==el.id){
+                    el.quantity++;
+                    return el
+                }else{
+                    return el
+                }
+            })
+            
+            localStorage.setItem("cart",JSON.stringify(d))
+            
+            setDartData(d)
+        }
+
+        const handleDicrement=(id)=>{
+            let d=cartData.filter((el)=>{
+                if(id==el.id){
+                    el.quantity--;
+                    return el
+                }else{
+                    return el
+                }
+            })
+           
+            localStorage.setItem("cart",JSON.stringify(d))
+            setDartData(d)
+        }
+        
+        const deleteCart=(i)=>{
+            cartData.splice(i,1)
+            localStorage.setItem("cart",JSON.stringify(cartData))
+            const c=JSON.parse(localStorage.getItem("cart"))||[]
+            setDartData(c)
+        }
     return(
         <Box >
             <Box>
@@ -26,8 +73,8 @@ function Cart(){
             </Box>
             <Box mt="30px">
                 {
-                    cartData.length>0? cartData.map((e)=>(
-                        <CartCard key={e.id} data={e} /> 
+                    cartData.length>0? cartData.map((e,i)=>(
+                        <CartCard key={e.id} data={e} i={i} handleDicrement={handleDicrement} handleIncrement={handleIncrement} deleteCart={deleteCart}/> 
                     )):<h1>No Data in cart</h1>
                 }
                
@@ -53,7 +100,9 @@ function Cart(){
                 </Box>
                 <Box display="flex" justifyContent="space-between">
                 <Box>Subtotal</Box>
-                    <Box fontWeight="bold">{total}</Box>
+
+                    <Box fontWeight="bold">{t}</Box>
+
                 </Box>
                 <Button w="100%" bg="black" color="white" display="flex" justifyContent="space-between" borderRadius="0" mt="30px">
                     <Box>

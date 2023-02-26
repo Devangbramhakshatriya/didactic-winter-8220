@@ -2,12 +2,11 @@ import { Box, Button, Image, Text } from "@chakra-ui/react";
 import { useState } from "react";
 
 export const total=[];
-function CartCard({data}){
+function CartCard({data,handleDicrement,handleIncrement,i,deleteCart}){
+    const cartData=JSON.parse(localStorage.getItem("cart"))||[]
     const [count,setCount]=useState(1)
     const handleCount=(val)=>{
-       
         setCount(count+val)
-    
     }
 // total.push(count*data.price);
     // console.log(data.image)
@@ -22,7 +21,7 @@ function CartCard({data}){
                         <Box m="auto">
                             <Text>{data.name}</Text>
                             <Text>{data.subhead}</Text>
-                            <Button>Remove</Button>
+                            <Button onClick={()=>deleteCart(i)}>Remove</Button>
                         </Box>
                     </Box>
                 </Box>
@@ -36,15 +35,16 @@ function CartCard({data}){
                 <Box w="100px" m="auto">
                     <Text fontWeight="bold">Quantity</Text>
                     <Box display="flex" border="1px solid gray" bg="none">
-                        <Button bg="none" onClick={()=>handleCount(1)}>+</Button>
-                        <Text  m="auto">{count}</Text>
-                        <Button bg="none" disabled={count=='1'} onClick={()=>handleCount(-1)}>-</Button>
+                        <Button bg="none" onClick={()=>handleIncrement(data.id)}>+</Button>
+                        <Text  m="auto">{data.quantity}</Text>
+                        <Button bg="none" isDisabled={data.quantity==1? true:false} onClick={()=>handleDicrement(data.id)}>-</Button>
                     </Box>
                 </Box>
 
                 <Box fontWeight="bold">
                     <Text >Total</Text>
-                    <Text>{count*data.price}</Text>
+                    <Text>{data.quantity*data.price}</Text>
+
                 </Box>
         </Box>
         
