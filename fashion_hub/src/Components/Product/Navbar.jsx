@@ -6,6 +6,7 @@ export default function Navbar() {
         <Link to='/'>Home</Link>
         <Link to='/product'>Product</Link>
         <Link to='/admin'>Admin</Link>
+        <Link to='/cart'>Cart</Link>
     </div>
   )
 }
