@@ -19,34 +19,18 @@ import { Search2Icon } from '@chakra-ui/icons';
 import {
     Button,
     
-  } from "@chakra-ui/react";
-  import {
+} from "@chakra-ui/react";
+import {
     FaUserCircle,
     FaUser,
     FaTruckMoving,
     FaUserPlus,
     FaRegUser,
     FaSignOutAlt,
-  } from "react-icons/fa";
-  import { BsGift, BsFillCartFill } from "react-icons/bs";
-import {
-    Drawer,
-    DrawerBody,
-    DrawerFooter,
-    DrawerHeader,
-    DrawerOverlay,
-    DrawerContent,
-    DrawerCloseButton,
-    Textarea,
-    FormLabel,
-    InputLeftAddon,
-    InputRightAddon,
-    Select,
-    Heading,
-   
-  } from "@chakra-ui/react";
-  import { useNavigate } from "react-router-dom";
-
+} from "react-icons/fa";
+import { BsGift, BsFillCartFill } from "react-icons/bs";
+import { useNavigate } from "react-router-dom";
+import { useRef } from 'react';
 
 
 const Navbar = () => {
@@ -57,7 +41,15 @@ const Navbar = () => {
     const GoTo = (path) => {
         console.log("path", path);
         navigateTo(path);
+    };
+    const overlayRef = useRef();
+    const openSearch = () => {
+        overlayRef.current.style.width = '100%';
+    };
+    const closeSearch = () => {
+        overlayRef.current.style.width = '0%';
       };
+
 
   return (
     <>
@@ -203,8 +195,8 @@ const Navbar = () => {
                     <Container >
                         <div style={{textAlign:"center",marginLeft:"36%"}}><img src={logo} width={150}  mb={10} alt="Site_logo" /></div>
                     </Container>
-                    <Container style={{border:"1px green solid"}}>
-                        <Flex>
+                    <Container height="80%" m={'auto'}>
+                        <Flex justify={"space-between"} ml="34%">
 
                             <Stack
                                 flex={{ base: 1, md: 0 }}
@@ -212,8 +204,8 @@ const Navbar = () => {
                                 direction={"row"}
                                 spacing={6}
                                 >
-                                <Button>
-
+                                <Button onClick={openSearch} >
+                                    <Search2Icon/>
                                 </Button>
                                 <Button
                                     display={{ base: "none", md: "inline-flex" }}
@@ -242,11 +234,36 @@ const Navbar = () => {
                                     <FaUserCircle color="black" />
                                 
                                 </Button>
-                                
                             </Stack>  
                         </Flex>
                     </Container>
                 </Flex>
+                <div ref={overlayRef} class='overlay'>
+                    <button class='close-button' onClick={closeSearch}>
+                    &times;
+                    </button>
+                    <div class='overlay-content'>
+                    <form>
+                        <input
+                        type='search'
+                        placeholder='Search Fashion Hub.com...'
+                        className='search-input'
+                        />
+                        <button
+                        className='search-button'
+                        onClick={() => {
+                            console.log('Hi there');
+                            /* Your search logic here */
+                        }}
+                        >
+                        Go
+                        </button>
+                        <p className='search-text'>
+                        Search your newest trends 
+                        </p>
+                    </form>
+                </div>
+                </div>
             </div>
         </div>
     </>

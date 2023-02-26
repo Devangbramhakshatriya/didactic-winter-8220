@@ -8,13 +8,24 @@ import {
   Text,
   Container,
   Image,
-  Link
+  Link,
+  Button
 } from '@chakra-ui/react';
+import {
+  FaUserCircle,
+  FaUser,
+  FaTruckMoving,
+  FaUserPlus,
+  FaRegUser,
+  FaSignOutAlt,
+} from "react-icons/fa";
 
 import { HamburgerIcon, CloseIcon } from '@chakra-ui/icons';
 import Logo from "./images/fashionHub.png";
 import "./Navbar.css";
 import SignIn from '../Login/SignIn';
+import { useNavigate } from "react-router-dom";
+
 
 const links = [
   { name: 'Mens', href: '/mens' },
@@ -25,27 +36,42 @@ const links = [
 const HamburgerMenu = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [menuLinks, setMenuLinks] = useState(links);
-
+  const navigateTo = useNavigate();
   const toggleMenu = () => {
     isOpen ? onClose() : onOpen();
+  };
+  const GoTo = (path) => {
+    console.log("path", path);
+    navigateTo(path);
   };
 
   return (
     <>
         
         <Flex justify={'space-between'} bgColor="#e5e5df">
-                <IconButton
-                    aria-label="Open Menu"
-                    size="lg"
-                    icon={<HamburgerIcon />}
-                    onClick={toggleMenu}
-                    display={{ base: 'block', md: 'none' }}
-                />
-            
-                <Image display={{ base: 'block', md: 'none' }} width="26%" Src={Logo} alt="Logo"></Image>
-           
-                <Box width="20vw" border="1px solid red">
-                    
+            <IconButton
+                aria-label="Open Menu"
+                size="lg"
+                icon={<HamburgerIcon />}
+                onClick={toggleMenu}
+                display={{ base: 'block', md: 'none' }}
+            />
+        
+            <Image display={{ base: 'block', md: 'none' }} width="26%" Src={Logo} alt="Logo"></Image>
+        
+            <Box width="20vw" border="1px solid red">
+                <Button
+                  display={{ base: "flex", md: "inline-flex" }}
+                  color={"black"}
+                  fontWeight={{ lg: "bold", md: "bold" }}
+                  variant={"link"}
+                  onClick={() => GoTo("/SignIn")}
+                  gap={2}
+                  fontSize={{ xl: "25px", lg: "16px", md: "13px", base: "20px" }} 
+                  >
+                  <FaUserCircle color="black" />
+              
+                </Button>
             </Box>
         </Flex>         
            

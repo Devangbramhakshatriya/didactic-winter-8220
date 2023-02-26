@@ -1,6 +1,6 @@
 import './App.css';
 import Product from './Pages/Product';
-// import Navbar from './Components/Navbar/Navbar';
+import Navbar from './Components/Navbar/Navbar';
 import Home from './Components/Home/Pages/Home';
 import Admin from './Pages/Admin';
 import MainRoutes from './Pages/MainRoutes';
@@ -10,8 +10,8 @@ import Signup from './Components/Signup/Signup';
 
 import Loginn from './Components/Login/SignIn';
 
-import Loginn from './Components/Login/Login';
-import Navbar from './Components/Product/Navbar';
+// import Loginn from './Components/Login/Login';
+// import Navbar from './Components/Product/Navbar';
 
 // import PaymentPage from './Pages/PaymentPage'
 
@@ -20,19 +20,18 @@ function App() {
   return (
       <div className="App">
 
-        {/* <Navbar/>
-        <Home/> */}
-        <Login/>
+        <Navbar/>
+        <Home/>
+        {/* <Login/> */}
         {/* <Signup/> */}
 
-        {/* <Navbar/> */}
-        <Navbar/>
+        
         {/* <Login/> */}
 
         {/* <Admin/>
         <Product/> */}
         
-        <MainRoutes/>
+        {/* <MainRoutes/> */}
         {/* <PaymentPage/> */}
 
         <Footer/>
