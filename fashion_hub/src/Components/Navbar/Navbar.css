@@ -26,12 +26,17 @@
     background-color: white;
 }
 
+.hamburgerMenu{
+    display: flex;
+    justify-content: space-between;
+}
+
 .TopText {
     font-family: cursive;
     font-size: 18px;
 }
 
-@media(max-width: 998px){
+@media(max-width: 1111px){
       .UpperNavbar{
         display: none;
       } 
@@ -43,4 +48,5 @@
     .mainNavbar{
         display: none;
     }
+    
 }
