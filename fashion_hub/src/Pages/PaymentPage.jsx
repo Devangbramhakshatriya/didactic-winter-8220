@@ -16,7 +16,6 @@ import {
 } from '@chakra-ui/react'
 import { Link, useNavigate } from 'react-router-dom';
 
-
 const PaymentPage = () => {
   const navigate=useNavigate()
     const { isOpen, onOpen, onClose } = useDisclosure()

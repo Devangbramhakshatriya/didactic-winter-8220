@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
-import { Link, useParams } from "react-router-dom";
+import { Link, Navigate, useParams } from "react-router-dom";
 import {IoIosArrowForward} from 'react-icons/io'
 import{FaEye} from 'react-icons/fa'
 import size from '../Components/Product/image/size.png'
@@ -43,7 +43,7 @@ export default function SingleProduct() {
 
    const n=Math.ceil(Math.random()*6);
 
-   const cartData=JSON.parse(localStorage.getItem("cart"))||[]
+  const cartData=JSON.parse(localStorage.getItem("cart"))||[]
    const handleCart=()=>{
     data.quantity=1;
     console.log(data)
@@ -91,8 +91,8 @@ export default function SingleProduct() {
                   <p style={{ padding:"10px"}}>{count}</p>
                <Button padding={"10px"} variant={'unstyled'} onClick={handleIncrement}><IoMdAdd/></Button>
             </Box>
-             <Link to='/cart'>
-             <Button width={'440px'} variant={'unstyled'} border={'1px solid black'} height={'44px'} 
+
+            <Link to="/cart"> <Button width={'440px'} variant={'unstyled'} border={'1px solid black'} height={'44px'} 
              _hover={{backgroundColor:"black",color: "white"}} onClick={handleCart}>Add to cart</Button>
              </Link>
           </div>

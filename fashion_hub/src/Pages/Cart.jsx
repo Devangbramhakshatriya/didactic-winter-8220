@@ -105,10 +105,12 @@ function Cart() {
                     <Box fontWeight="bold">{t}</Box>
 
                 </Box>
+
                 <Link to="/buynow">
                     <Button w="100%" bg="black" color="black" display="flex" justifyContent="space-between" borderRadius="0" mt="30px">
                         <Box>
                             <Text >Place Order</Text>
+
                             <Text fontSize={["5px", "6px", "8px", "10px", "11px", "11px"]}>5% Extra off on UPI</Text>
                         </Box>
                         <Box>

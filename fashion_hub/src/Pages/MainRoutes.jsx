@@ -18,6 +18,7 @@ const MainRoutes = () => {
       <Route path='/cart' element={<Cart/>}/>
       <Route path='/signin' element={<SignIn/>}/>
       <Route path={'/product/:id'} element={<SingleProduct/>}/>
+      <Route path='/payment' element={<PaymentPage/>}/>
       <Route path='*' element={<h2>404 Page Not Found!</h2>}/>
       <Route path='/buynow' element={<PaymentPage/>}/>
     </Routes>
