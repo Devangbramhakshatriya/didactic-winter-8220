@@ -15,6 +15,7 @@ const initialValue=1;
 
 export default function SingleProduct() {
   const [count, setCount] = useState(initialValue);
+  
   const { id } = useParams();
   console.log(id,"id");
   const products = useSelector((store) => {
