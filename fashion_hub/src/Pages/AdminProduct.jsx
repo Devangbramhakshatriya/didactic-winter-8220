@@ -1,8 +1,8 @@
-import { Heading } from '@chakra-ui/react'
+import { Heading,Button } from '@chakra-ui/react'
 import React from 'react'
 import { Link } from 'react-router-dom'
 import Filter from '../Components/Product/Filter'
-import ProductList from '../Components/Product/ProductList'
+import AdminList from '../Components/Product/AdminList'
 import logo from '../Components/Product/image/row.png'
 import '../CSS/Product.css'
 // import Navbar from '../Components/Navbar/Navbar'
@@ -25,9 +25,15 @@ export default function AdminProduct() {
         <Filter />
         <img className="product-logo" src={logo} alt=''/>
       </div>
-      
       <div>
-        <ProductList/>
+        <Link to='/adminpage'>
+         <Button>
+          Add new product
+         </Button>
+        </Link>
+      </div>
+      <div>
+        <AdminList/>
       </div>
     </>
   )

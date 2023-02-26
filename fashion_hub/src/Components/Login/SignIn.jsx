@@ -58,7 +58,7 @@ const SignIn = () => {
             formData.email === "admin@admin.com" &&
             formData.password === "123456"
           ) {
-            navigateTo("/adminpage");
+            navigateTo("/admin");
           } else if (login) {
             dispatch(SetUserDataAfterLogin(login));
             toast({
