@@ -17,7 +17,7 @@ const theme = extendTheme({ breackpoints })
 
 function Cart(){
     const cartData=JSON.parse(localStorage.getItem("cart"))||[]
-    console.log(total)    
+    console.log(total,"iii")    
     return(
         <Box >
             <Box>
@@ -53,7 +53,7 @@ function Cart(){
                 </Box>
                 <Box display="flex" justifyContent="space-between">
                 <Box>Subtotal</Box>
-                    <Box fontWeight="bold">15156</Box>
+                    <Box fontWeight="bold">{total}</Box>
                 </Box>
                 <Button w="100%" bg="black" color="white" display="flex" justifyContent="space-between" borderRadius="0" mt="30px">
                     <Box>

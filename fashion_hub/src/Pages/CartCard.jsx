@@ -9,7 +9,7 @@ function CartCard({data}){
         setCount(count+val)
     
     }
-total.push(count*data.price);
+// total.push(count*data.price);
     // console.log(data.image)
     return(
         <Box display={["","flex","flex","flex","flex","flex"]} w="95%" m="auto" justifyContent="space-between" borderTop="1px solid gray" borderBottom="1px solid gray" fontFamily="sans-serif" alignContent="center" alignItems="center">
@@ -38,14 +38,13 @@ total.push(count*data.price);
                     <Box display="flex" border="1px solid gray" bg="none">
                         <Button bg="none" onClick={()=>handleCount(1)}>+</Button>
                         <Text  m="auto">{count}</Text>
-                        <Button bg="none" disabled={count='1'} onClick={()=>handleCount(-1)}>-</Button>
+                        <Button bg="none" disabled={count=='1'} onClick={()=>handleCount(-1)}>-</Button>
                     </Box>
                 </Box>
 
                 <Box fontWeight="bold">
                     <Text >Total</Text>
                     <Text>{count*data.price}</Text>
-                    
                 </Box>
         </Box>
         
