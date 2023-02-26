@@ -23,6 +23,7 @@ export default function Product() {
         <Filter/>
         <img style={{marginLeft:"63%", cursor:"pointer"}} src={logo} alt=''/>
       </div>
+      
       <div>
       <ProductList/>
       </div>
