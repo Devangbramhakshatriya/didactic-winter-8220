@@ -47,7 +47,7 @@ export default function SingleProduct() {
     <div style={{display:"flex", margin:"auto", justifyContent:"center", fontSize:"14px", fontFamily:"Helvetica",fontWeight:"500"}}>
         <span><Link to='/'>Home</Link></span>
         <IoIosArrowForward style={{margin:"4px 5px 0px 5px"}}/>
-        <span><Link to='/'>all men products</Link></span>
+        <span><Link to='/product'>all men products</Link></span>
         <IoIosArrowForward style={{margin:"4px 5px 0px 5px"}}/>
         <span style={{textTransform:"lowercase"}}>{data.name}</span>
       </div>
@@ -55,10 +55,16 @@ export default function SingleProduct() {
      <div style={{padding:"40px 25px 0px 100px"}}>
      <img  style={{width:"480px", height:"640px"}} src={data.image} alt="" />
      </div>
-     
-     <div style={{marginTop:"80px", textAlign:"left"}}>
-         <p style={{fontSize:"26px", lineHeight:"42px"}}>{data.name}<Button float={'right'} fontSize={'24px'}
-         variant={'unstyled'} padding={'6px'} border={'1px solid black'} borderRadius={'50%'}><BsStar/></Button></p>
+
+     <div style={{marginTop:"50px", textAlign:"left"}}>
+         <div style={{display:"flex"}}>
+         <p style={{fontSize:"26px", lineHeight:"42px",width:"70%"}}>
+          {data.name}
+         </p>
+         <Button float={'right'} fontSize={'24px'}variant={'unstyled'} padding={'6px'} 
+         border={'1px solid black'} borderRadius={'50%'}><BsStar/>
+         </Button>
+         </div>
          <p style={{fontSize:"26px", lineHeight:"42px"}}>RS. {data.price}</p>
          <p style={{color:"grey", fontSize:"14px", lineHeight:"21px"}}>Tax included.</p>
          <div style={{margin:"20px 0px 20px 0px"}}>
