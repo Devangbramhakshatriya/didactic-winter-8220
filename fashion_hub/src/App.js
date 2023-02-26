@@ -1,7 +1,7 @@
 import './App.css';
 import Product from './Pages/Product';
 import Navbar from './Components/Navbar/Navbar';
-import Home from './Components/Home/Pages/Home';
+// import Home from './Components/Home/Pages/Home';
 import Admin from './Pages/Admin';
 import MainRoutes from './Pages/MainRoutes';
 import Footer from './Components/Footer/Footer';
@@ -14,13 +14,13 @@ import Loginn from './Components/Login/Login';
 function App() {
   return (
       <div className="App">
-        {/* <Navbar/>
-        <Home/> */}
-        <Login/>
+        <Navbar/>
+        {/* <Home/> */}
+        {/* <Login/> */}
         {/* <Admin/>
         <Product/> */}
         
-        {/* <MainRoutes/> */}
+        <MainRoutes/>
         {/* <PaymentPage/> */}
 
         <Footer/>

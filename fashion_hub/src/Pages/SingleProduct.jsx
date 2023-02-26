@@ -19,7 +19,7 @@ export default function SingleProduct() {
   const { id } = useParams();
   console.log(id,"id");
   const products = useSelector((store) => {
-    return store.product;
+    return store.product.product;
   });
 
   console.log(products,"hjkl")
@@ -56,7 +56,7 @@ export default function SingleProduct() {
      <img  style={{width:"480px", height:"640px"}} src={data.image} alt="" />
      </div>
      <div style={{marginTop:"80px", textAlign:"left"}}>
-         <p style={{fontSize:"26px", lineHeight:"42px"}}>{data.name}<Button marginLeft={'22%'} fontSize={'24px'}
+         <p style={{fontSize:"26px", lineHeight:"42px"}}>{data.name}<Button float={'right'} fontSize={'24px'}
          variant={'unstyled'} padding={'6px'} border={'1px solid black'} borderRadius={'50%'}><BsStar/></Button></p>
          <p style={{fontSize:"26px", lineHeight:"42px"}}>RS. {data.price}</p>
          <p style={{color:"grey", fontSize:"14px", lineHeight:"21px"}}>Tax included.</p>

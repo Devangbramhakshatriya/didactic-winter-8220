@@ -11,7 +11,7 @@ export default function Product() {
     // whole container
     <>
       <div>
-        <Heading style={{fontFamily:"Helvetica", fontSize:"42px", textAlign:"center",fontWeight:"500",margin:"30px",lineHeight:"28px",
+        <Heading style={{fontFamily:"Helvetica",width:"auto", fontSize:"42px", textAlign:"center",fontWeight:"500",margin:"30px",lineHeight:"28px",
           textTransform:"uppercase"}}>MEN ALL CLOTHING</Heading>
           <div style={{fontWeight:"500", fontSize:"14px",margin:"-10px 0px 60px 0px"}}>
              <Link to='/'>Home</Link> {">"} Men all cothing
@@ -19,9 +19,9 @@ export default function Product() {
       </div >
 
       {/* sort and filter container */}
-      <div  style={{ display:"flex",paddingLeft:"3.2%",width:"100%"}}>
+      <div  style={{ display:"flex",paddingLeft:"3.2%",width:"100%",justifyContent:"space-between"}}>
         <Filter/>
-        <img style={{marginLeft:"63%", cursor:"pointer"}} src={logo} alt=''/>
+        <img style={{float:"right", cursor:"pointer"}} src={logo} alt=''/>
       </div>
       
       <div>

@@ -9,7 +9,7 @@ const ProductList = () => {
   const [searchParams] = useSearchParams();
   const location = useLocation();
   const products = useSelector((store) => {
-    return store.product;
+    return store.product.product;
   });
 
   const dispatch = useDispatch();

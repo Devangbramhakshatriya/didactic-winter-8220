@@ -54,7 +54,7 @@ const Filter = () => {
     },[category,order])
 
   return (
-   <>
+   <div style={{display:"flex"}}>
    <Button onClick={onOpen} bg='none' fontSize='14px' variant='unstyled' display='flex'>Filter<BiChevronDown/></Button>
    <Drawer size={'sm'} isOpen={isOpen} placement='left' onClose={onClose} finalFocusRef={btnRef}>
    <DrawerOverlay/>
@@ -210,7 +210,7 @@ const Filter = () => {
         <option style={{cursor:"pointer", fontWeight:'600'}}  value="">Date,New to Old</option>
       </Select>
     </div>
-    </>
+    </div>
   )
 }
 
