@@ -99,8 +99,6 @@ const SignIn = () => {
 
   return (
     <>
-      <Navbar/>
-      <HamburgerMenu/>
       <Flex
       minH={"100vh"}
       align={"center"}
@@ -143,7 +141,7 @@ const SignIn = () => {
             <Stack spacing={10}>
               <Stack
                 direction={{ base: "column", sm: "row" }}
-                align={"start"}
+                // align={"start"}
                 justify={"space-between"}
               >
                 <Checkbox borderColor={"grey"}>Remember me</Checkbox>

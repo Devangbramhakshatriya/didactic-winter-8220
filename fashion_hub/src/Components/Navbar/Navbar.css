@@ -1,13 +1,18 @@
+* {
+  font-family: Helvetica;
+  background-color: #ffffff;
+}
 .mainNavbar {
     top: 0;
     left: 0;
-    position: fixed;
-    width: 100vw;
+    position: sticky;
+    width: 100%;
+    background-color: #ffffff;
 }
 
 .UpperNavbar {
     height: 36px;
-    background-color: rgb(255, 255, 222);
+    background-color: #ffffff;
 }
 
 .imageMens {
@@ -20,11 +25,10 @@
     height: 100%;
     width: 0;
     position: fixed;
-    z-index: 1;
+    z-index:1000;
     top: 0;
     left: 0;
-    background-color: rgba(0, 0, 0, 0.85);
-    transition: 0.5s;
+    /* transition: 0.5s; */
     overflow-x: hidden;
   }
   
@@ -78,7 +82,7 @@
     cursor: pointer;
     background: #199da9;
     border-radius: 0px 30px 30px 0px;
-    transition: 0.3s;
+    /* transition: 0.3s; */
   }
   
   .search-button:hover {
@@ -87,7 +91,6 @@
   
   .search-text {
     color: rgba(255, 255, 255, 0.7);
-    font-style: italic;
   }
 
 .LowerNavCont{
@@ -97,7 +100,6 @@
 .LowerNavbar {
     height: 44px;
     box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 15px -3px, rgba(0, 0, 0, 0.05) 0px 4px 6px -2px;
-    background-color: white;
 }
 
 .hamburgerMenu{
@@ -105,10 +107,6 @@
     justify-content: space-between;
 }
 
-.TopText {
-    font-family: cursive;
-    font-size: 18px;
-}
 
 @media(max-width: 1111px){
       .UpperNavbar{

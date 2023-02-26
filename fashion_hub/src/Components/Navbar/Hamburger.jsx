@@ -48,7 +48,7 @@ const HamburgerMenu = () => {
   return (
     <>
         
-        <Flex justify={'space-between'} bgColor="#e5e5df">
+        <Flex justify={'space-between'} bgColor="#e5e5df" marginBottom={20}>
             <IconButton
                 aria-label="Open Menu"
                 size="lg"
@@ -57,9 +57,8 @@ const HamburgerMenu = () => {
                 display={{ base: 'block', md: 'none' }}
             />
         
-            <Image display={{ base: 'block', md: 'none' }} width="26%" Src={Logo} alt="Logo"></Image>
         
-            <Box width="20vw" border="1px solid red">
+            {/* <Box width="20vw" border="1px solid red">
                 <Button
                   display={{ base: "flex", md: "inline-flex" }}
                   color={"black"}
@@ -72,7 +71,7 @@ const HamburgerMenu = () => {
                   <FaUserCircle color="black" />
               
                 </Button>
-            </Box>
+            </Box> */}
         </Flex>         
            
       <Box

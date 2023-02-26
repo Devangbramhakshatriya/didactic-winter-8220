@@ -1,7 +1,14 @@
 import React from 'react'
-import { Flex, Container, Center, Box, Menu,MenuItem, Avatar, AvatarBadge,} from "@chakra-ui/react";
+import { Flex, Container, Center, Box, Menu,MenuItem, Avatar, AvatarBadge, Heading,} from "@chakra-ui/react";
 import insta from "./images/640px-Instagram_icon.png";
+import {BiChevronDown} from 'react-icons/bi';
+import {FaFacebookF} from 'react-icons/fa'
+import {BsInstagram} from 'react-icons/bs'
+import {BsPerson,BsSearch} from 'react-icons/bs'
+import {BiShoppingBag} from 'react-icons/bi'
+import {AiOutlineStar} from 'react-icons/ai'
 import "./Navbar.css";
+import { Link } from 'react-router-dom';
 import logo from "./images/fashionHub.png"
 import { useDisclosure } from "@chakra-ui/react";
 import {
@@ -54,37 +61,42 @@ const Navbar = () => {
   return (
     <>
         
-        <div className='mainNavbar'>
+        <div className='mainNavbar' >
             <div className="UpperNavbar">
-                <Flex justify={'space-between'} paddingRight={8}  paddingLeft={8} padding={1} fontWeight={600}>
+                <Flex justify={'space-between'} paddingRight={6}  paddingLeft={40} padding={1}>
                     <Container>
-                        <Flex alignItems={'center'} gap={3} >
-                            <img src={insta} width={24} alt="Insta_image" />
-                            <p>1.5 Million</p>
+                        <Flex alignItems={'center'} gap={3} marginLeft={'20px'}>
+                            <FaFacebookF/>
+                            <p style={{fontSize:"15px",lineHeight:"22px",fontWeight:"550",marginRight:"20px"}}>1.8 M Followers</p>
+                            <BsInstagram/>
+                            <p style={{fontSize:"15px",lineHeight:"22px",fontWeight:"550"}}>682k followers</p>
                         </Flex>
                     </Container>
                     <Container >
-                        <p  style={{fontWeight:"500"}}>Your Fashion Hub | <span className='TopText'>MODERN X FASHION</span></p>
+                        <p  style={{fontWeight:"500",fontSize:"15px",lineHeight:'22px',padding:"5px"}}>Open doors to a world of fashion | Young and fresh</p>
                     </Container>
-                    <Container textAlign={'right'}>
-                        <p>English</p>
+                    <Container display={'flex'} justifyContent={'flex-end'}>
+                        <p style={{fontSize:"14px"}}>English</p>
+                        <BiChevronDown/>
                     </Container>
-                </Flex>
+                </Flex>   
             </div>
+            <div style={{height:"1px",width:"100%",borderBottom:"1px solid grey",borderColor:"#EEEEEE"}}></div>
             <div className='LowerNavbar'>
                 <Flex>
                     <Container >
                         <Flex className='LowerNavCont'>
                             <Menu isOpen={menu1} >
                                 <MenuButton
-                                    variant="ghost"
+                                    variant="unstyled"
+                                    fontSize={'14px'}
+                                    fontWeight={'600'}
                                     mx={1}
                                     py={[1, 2, 2]}
                                     px={4}
                                     borderRadius={5}
-                                    _hover={{ bg: useColorModeValue("gray.100", "gray.700") }}
+                                    // _hover={{ bg: useColorModeValue("gray.100", "gray.700") }}
                                     aria-label="Courses"
-                                    fontWeight="normal"
                                     onMouseEnter={menu1Open}
                                     onMouseLeave={menu1Close}
                                 >
@@ -98,7 +110,9 @@ const Navbar = () => {
                                                     <Box style={{fontSize:"12px", fontWeight:"800"}}>
                                                         <MenuItem style={{fontSize:"18px", fontWeight:"600"}}>Clothing</MenuItem>
                                                         <MenuItem>New In</MenuItem>
+                                                        <Link to='/product'>
                                                         <MenuItem>View All</MenuItem>
+                                                        </Link>
                                                         <MenuItem>T-Shirts</MenuItem>
                                                         <MenuItem>Jackets & Coats</MenuItem>
                                                         <MenuItem>Hoodies & Sweatshirts</MenuItem>
@@ -135,9 +149,10 @@ const Navbar = () => {
                                     py={[1, 2, 2]}
                                     px={4}
                                     borderRadius={5}
-                                    _hover={{ bg: useColorModeValue("gray.100", "gray.700") }}
+                                    // _hover={{ bg: useColorModeValue("gray.100", "gray.700") }}
                                     aria-label="Courses"
-                                    fontWeight="normal"
+                                    fontSize={'14px'}
+                                    fontWeight={'600'}
                                     onMouseEnter={onOpen}
                                     onMouseLeave={onClose}
                                 >
@@ -193,7 +208,11 @@ const Navbar = () => {
                         </Flex>
                     </Container>
                     <Container >
-                        <div style={{textAlign:"center",marginLeft:"36%"}}><img src={logo} width={150}  mb={10} alt="Site_logo" /></div>
+                        <div style={{textAlign:"center",marginLeft:"10%"}}>
+                           <Link to='/'>
+                           <Heading padding={'10px'}>Fashion Hub</Heading>
+                           </Link>
+                        </div>
                     </Container>
                     <Container height="80%" m={'auto'}>
                         <Flex justify={"space-between"} ml="34%">
@@ -202,38 +221,32 @@ const Navbar = () => {
                                 flex={{ base: 1, md: 0 }}
                                 justify={"flex-end"}
                                 direction={"row"}
-                                spacing={6}
+                                
                                 >
-                                <Button onClick={openSearch} >
-                                    <Search2Icon/>
+                                <Button variant={'unstyled'}   fontSize={'22px'} onClick={openSearch} >
+                                    <BsSearch/>
                                 </Button>
+                                <Button onClick={() => GoTo("/SignIn")} variant={'unstyled'}   fontSize={'24px'} fontWeight={'500'}>
+                                    <BsPerson/>
+                                </Button>
+                                <Button variant={'unstyled'} marginLeft={'-10px'}   fontSize={'24px'}>
+                                    <AiOutlineStar/>
+                                </Button>
+                                <Link to='/cart'>
                                 <Button
                                     display={{ base: "none", md: "inline-flex" }}
                                     textAlign="center"
                                     fontWeight={"bold"}
                                     gap={2}
-                                    
+                                    variant={'unstyled'}
                                     cursor="pointer"
                                     fontSize={{ xl: "25px", lg: "16px", md: "13px", base: "10px" }}
                                     onClick={() => GoTo("")}
                                     color={"black"}
                                     >
-                                    <BsFillCartFill color={"black"} />
-                                    Cart
+                                    <BiShoppingBag color={"black"}/>
                                 </Button>
-                                <Button
-                                    display={{ base: "flex", md: "inline-flex" }}
-                                    color={"black"}
-                                    fontWeight={{ lg: "bold", md: "bold" }}
-                                    variant={"link"}
-                                    onClick={() => GoTo("/SignIn")}
-                                    gap={2}
-                                    fontSize={{ xl: "25px", lg: "16px", md: "13px", base: "20px" }}
-                                    
-                                    >
-                                    <FaUserCircle color="black" />
-                                
-                                </Button>
+                                </Link>
                             </Stack>  
                         </Flex>
                     </Container>

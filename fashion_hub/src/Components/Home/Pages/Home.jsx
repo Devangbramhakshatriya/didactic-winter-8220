@@ -3,6 +3,7 @@ import { extendTheme } from '@chakra-ui/react'
 import { useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { getHome, getHome_Product } from "../../../Redux/HomeProduct/action"
+// import Navbar from "../../Navbar/Navbar"
 import Carausal from "../Components/Carausal"
 import ProductCart from "../Components/ProductCart"
 const breackpoints = {
@@ -28,6 +29,8 @@ function Home() {
         dispatch(getHome());
     }, []);
     return (
+        <>
+        {/* <Navbar/> */}
         <Box className="main_home_box">
             <Box className="top_banner_box" m="auto" w="100%">
                 <Image src="kooves banner.png" m="auto" w="90%" p="5%" />
@@ -63,6 +66,7 @@ function Home() {
                 </SimpleGrid>
             </Box>
         </Box>
+        </>
     )
 }
 export default Home;

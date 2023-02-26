@@ -44,8 +44,10 @@ export default function SingleProduct() {
    const n=Math.ceil(Math.random()*6);
 
    const cartData=JSON.parse(localStorage.getItem("cart"))||[]
-
    const handleCart=()=>{
+    data.quantity=1;
+    console.log(data)
+    
     cartData.push(data)
     localStorage.setItem("cart",JSON.stringify(cartData))
     console.log(data)
@@ -89,11 +91,15 @@ export default function SingleProduct() {
                   <p style={{ padding:"10px"}}>{count}</p>
                <Button padding={"10px"} variant={'unstyled'} onClick={handleIncrement}><IoMdAdd/></Button>
             </Box>
+             <Link to='/cart'>
              <Button width={'440px'} variant={'unstyled'} border={'1px solid black'} height={'44px'} 
              _hover={{backgroundColor:"black",color: "white"}} onClick={handleCart}>Add to cart</Button>
+             </Link>
           </div>
-        <Button width={'562px'} variant={'unstyled'} border={'1px solid black'} height={'44px'} backgroundColor={'black'} color={'white'}
+       <Link to='/buynow'>
+       <Button width={'562px'} variant={'unstyled'} border={'1px solid black'} height={'44px'} backgroundColor={'black'} color={'white'}
         _hover={{backgroundColor:"white",color: "black"}} margin='20px 0px 10px 0px'>BUY IT NOW</Button>
+       </Link>
         </div>
         <div style={{display:"flex",marginTop:"50px", fontSize:"14px"}}>
         <BsQuestionCircle fontSize={'20px'}/>

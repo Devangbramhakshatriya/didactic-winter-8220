@@ -14,8 +14,11 @@ import {
   AlertTitle,
   AlertDescription,
 } from '@chakra-ui/react'
+import { Link, useNavigate } from 'react-router-dom';
+
 
 const PaymentPage = () => {
+  const navigate=useNavigate()
     const { isOpen, onOpen, onClose } = useDisclosure()
   const cancelRef = React.useRef()
 
@@ -35,7 +38,11 @@ const PaymentPage = () => {
   } 
   const handleSubmit = (e) => {
     e.preventDefault();
-    
+    setValue({ number:"",
+    month:"",
+    year:"",
+    cvv:"",
+    name:""})
     //  if(value.number.length>0 || value.month.length>0 || value.year.length>0 || value.cvv.length>0 || value.name.length>0 ){
        onOpen()
     //  }
@@ -44,9 +51,7 @@ const PaymentPage = () => {
     <div>
         <div id="maincontainer">
       <div>
-        <div onclick="homepage()">
-          <img src="https://cdn.shopify.com/s/files/1/0677/1464/6315/files/koovs_final_logo.svg?v=1667889730" width="8%" style={{marginLeft:"20px"}} />
-        </div>
+        
       </div>
       <div>
         <img src="https://i.imgur.com/WVzlJRk.jpeg" />
@@ -118,6 +123,12 @@ const PaymentPage = () => {
   </AlertTitle>
   <AlertDescription maxWidth='sm'>
     Thanks for giving your order. Our team will get back to you soon.
+    <br />
+    <Link to='/'>
+      <Button>
+      Continue Shopping
+      </Button>
+    </Link>
   </AlertDescription>
 </Alert>
           </AlertDialogContent>
