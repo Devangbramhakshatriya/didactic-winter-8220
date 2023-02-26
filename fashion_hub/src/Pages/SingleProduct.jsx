@@ -55,6 +55,7 @@ export default function SingleProduct() {
      <div style={{padding:"40px 25px 0px 100px"}}>
      <img  style={{width:"480px", height:"640px"}} src={data.image} alt="" />
      </div>
+     
      <div style={{marginTop:"80px", textAlign:"left"}}>
          <p style={{fontSize:"26px", lineHeight:"42px"}}>{data.name}<Button float={'right'} fontSize={'24px'}
          variant={'unstyled'} padding={'6px'} border={'1px solid black'} borderRadius={'50%'}><BsStar/></Button></p>
