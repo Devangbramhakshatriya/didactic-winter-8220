@@ -4,7 +4,7 @@ import {BsPencil} from "react-icons/bs"
 import {FaShippingFast} from "react-icons/fa"
 import {RiCouponLine} from "react-icons/ri"
 import {FiChevronRight} from "react-icons/fi"
-
+import { total } from "./CartCard";
 const breackpoints = {
     base: "420px",
     sm: "550px",
@@ -16,6 +16,8 @@ const breackpoints = {
 const theme = extendTheme({ breackpoints })
 
 function Cart(){
+    const cartData=JSON.parse(localStorage.getItem("cart"))||[]
+    console.log(total,"iii")    
     return(
         <Box >
             <Box>
@@ -23,7 +25,12 @@ function Cart(){
                 <Text mt="20px">Home - our Shopping Cart</Text>
             </Box>
             <Box mt="30px">
-               <CartCard/> 
+                {
+                    cartData.length>0? cartData.map((e)=>(
+                        <CartCard key={e.id} data={e} /> 
+                    )):<h1>No Data in cart</h1>
+                }
+               
             </Box>
             <Box mt="40px" w={["90%","40%","35%","25%","20%","20%"]} ml={["2px","200px","400px","700px","1000px","1000px"]}>
                 <Box display="flex"  borderBottom="1px solid gray" justifyContent="space-between">
@@ -46,7 +53,7 @@ function Cart(){
                 </Box>
                 <Box display="flex" justifyContent="space-between">
                 <Box>Subtotal</Box>
-                    <Box fontWeight="bold">15156</Box>
+                    <Box fontWeight="bold">{total}</Box>
                 </Box>
                 <Button w="100%" bg="black" color="white" display="flex" justifyContent="space-between" borderRadius="0" mt="30px">
                     <Box>

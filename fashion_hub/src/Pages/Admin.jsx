@@ -36,7 +36,7 @@ const Admin=()=>{
        <form onSubmit={(e)=>{
         handleSubmit(e);
        }}>
-       <FormControl>
+       <FormControl bgColor={'whitesmoke'} boxShadow={'rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px'} padding={'20px'} borderRadius={'5px'}>
             <Heading>Add Product</Heading>
             <FormLabel>Image</FormLabel>
             <Input type="url" name='image' value={product.image} onChange={(e)=>handleChange(e)}/>
@@ -50,7 +50,7 @@ const Admin=()=>{
             <Input type="text" name="category" value={product.category} onChange={(e)=>handleChange(e)}/>
             <FormLabel>discount</FormLabel>
             <Input type="number" name="discount" value={product.discount} onChange={(e)=>handleChange(e)}/>
-            <Button type='submit'>Add Product</Button>
+            <Button bgColor={'goldenrod'} margin={'10px'} type='submit'>Add Product</Button>
         </FormControl>
        </form>
       </Wrapper>
