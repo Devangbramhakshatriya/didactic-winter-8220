@@ -49,11 +49,11 @@
 Worked on Landing Page and Cart Module
 #### Anish Jha
 > Github: [Anish-Jha](https://github.com/Anish-Jha)
-Worked on Admin and User module
+Worked on Navbar, Admin and User module
 
 #### Kartikey Mishra
 >Github: [Kartikey0813](https://github.com/Kartikey0813)
-Worked on Navbar and Login Logout Module
+Worked on Login and Logout Module
 
 #### Arth Bhushan
 >Github: [arthbh](https://github.com/arthbh)
