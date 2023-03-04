@@ -1,5 +1,5 @@
 # didactic-winter-8220
-<img src="https://cdn.shopify.com/s/files/1/0677/1464/6315/files/koovs_final_logo.svg?v=1667889730" />
+<img width="250px" src="https://cdn.shopify.com/s/files/1/0677/1464/6315/files/koovs_final_logo.svg" />
 
 # KOOVS
 
