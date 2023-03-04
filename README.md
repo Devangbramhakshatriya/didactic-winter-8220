@@ -1,6 +1,5 @@
 # didactic-winter-8220
-# windy-picture-8509
-<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSpOt03xZ0v82zh5yyN9j8h3eGLoe0cg0V7v9EBcKYK&s" />
+<img src="https://cdn.shopify.com/s/files/1/0677/1464/6315/files/koovs_final_logo.svg?v=1667889730" />
 
 # KOOVS
 
