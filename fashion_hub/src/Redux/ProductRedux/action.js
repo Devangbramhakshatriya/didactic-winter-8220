@@ -20,7 +20,7 @@ export const postProductSuccess=()=>{
 
 export const getProduct=(params)=>(dispatch)=>{
     dispatch(productRequest());
-    axios.get("http://localhost:8080/product",params).then((res)=>{
+    axios.get("https://fashion-hub-r5a1.onrender.com/product",params).then((res)=>{
         dispatch(getProductSuccess(res.data));
         // console.log(res.data);
     }).catch(()=>{
@@ -30,7 +30,7 @@ export const getProduct=(params)=>(dispatch)=>{
 
 export const addProduct=(payload)=>(dispatch)=>{
     dispatch(productRequest());
-    axios.post("http://localhost:8080/product", payload).then(()=>{
+    axios.post("https://fashion-hub-r5a1.onrender.com/product", payload).then(()=>{
         dispatch(postProductSuccess());
     }).catch(()=>{
         dispatch(productFailure());
@@ -39,7 +39,7 @@ export const addProduct=(payload)=>(dispatch)=>{
 
 export const editProduct=(id,newData)=>(dispatch)=>{
     dispatch(productRequest());
-    axios.patch(`http://localhost:8080/product/${id}`,newData).then(()=>{
+    axios.patch(`https://fashion-hub-r5a1.onrender.com/product/${id}`,newData).then(()=>{
         dispatch({type:PATCH_PRODUCT_SUCCESS})
     }).catch(()=>{
         dispatch(productFailure());

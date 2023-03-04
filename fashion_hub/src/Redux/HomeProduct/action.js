@@ -16,7 +16,7 @@ export const HomeFailure=()=>{
 
 export const getHome=()=>(dispatch)=>{
     dispatch(HomeRequest());
-    axios.get("http://localhost:8080/home").then((res)=>{
+    axios.get("https://fashion-hub-r5a1.onrender.com/home").then((res)=>{
         dispatch(getHomeSuccess(res.data));
         
     }).catch(()=>{
