@@ -1,179 +1,147 @@
 import React, { useState } from "react";
-import {
-  Flex,
-  Box,
+import {Box,Breadcrumb,BreadcrumbItem,BreadcrumbLink,
+  Button,
+  Divider,
   FormControl,
   FormLabel,
-  Input,
-  Checkbox,
-  Stack,
-  Link,
-  Button,
   Heading,
-  Text,
-  useColorModeValue,
+  Input,
+  Link,
+  Stack,
   useToast,
 } from "@chakra-ui/react";
-import { useNavigate } from "react-router-dom";
-import Signup from "../Signup/Signup"
-import axios from "axios";
-import { SetUserDataAfterLogin } from "../Auth/auth.action";
-import { useDispatch } from "react-redux";
-import Navbar from "../Navbar/Navbar";
-import HamburgerMenu from "../Navbar/Hamburger";
-import {Link as RouterLink} from "react-router-dom"
-const SignIn = () => {
-  const toast = useToast();
+import { useNavigate } from 'react-router-dom'
+import { useDispatch, useSelector } from "react-redux";
+import { login } from "../../Redux/AuthRedux/action";
+import { LOGIN_SUCCESS,LOGIN_FAILURE } from "../../Redux/AuthRedux/actionTypes";
+import { extendTheme } from '@chakra-ui/react'
 
+
+const breakpoints = {
+  sm: '320px',
+  md: '768px',
+  lg: '960px',
+  xl: '1200px',
+  '2xl': '1536px',
+}
+const theme = extendTheme({ breakpoints })
+
+const SignIn = () => {
+
+  const toast = useToast()
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   const dispatch = useDispatch();
-  const navigateTo = useNavigate();
-  const [formData, setFormData] = useState({
-    email: "",
-    password: "",
-  });
-  const signUppage = () => {
-    toast({
-      position: "bottom-left",
-      title: "Welcome to SignUp.",
-      description: "Here You can Create Your Account.",
-      status: "success",
-      duration: 4000,
-      isClosable: true,
-    });
-    navigateTo("/signup");
-  };
-  const Login = () => {
-    try {
-      let users = axios
-        .get("https://next-backend-orpin.vercel.app/user")
-        .then((response) => {
-          let login = response.data.find((item) => {
-            return (
-              item.email === formData.email &&
-              item.password === formData.password
-            );
-          });
-          console.log("login in user", login, response.data);
-          if (
-            formData.email === "admin@admin.com" &&
-            formData.password === "123456"
-          ) {
-            navigateTo("/admin");
-          } else if (login) {
-            dispatch(SetUserDataAfterLogin(login));
-            toast({
-              title: "Welcome to Our AquaShop.",
-              description: "We are Happy To serve you.",
-              status: "success",
-              duration: 6000,
-              isClosable: true,
-            });
-            navigateTo("/");
-          } else {
-            console.log("login creds invalid");
-            toast({
-              title: "Credential Invalid.",
-              description: "",
-              status: "error",
-              duration: 4000,
-              isClosable: true,
-            });
-          }
-        });
-    } catch (error) {
-      console.log("error", error);
+  const navigate = useNavigate();
+
+  const loginHandler = () => {
+    if(email=="" || password==""){
+      toast({
+        title: 'invalid credentials',
+        description: "Please fill all neccessary fields!",
+        status: 'error',
+        duration: 5000,
+        isClosable: true,
+      })
+    }else if(email=='admin@gmail.com' || password=="123"){
+      navigate("/admin", { replace: true });
+    }
+    else if (email && password) {
+      const params = {
+        email,
+        password,
+      };
+    
+      dispatch(login(params)).then((res) => {
+        if (res === LOGIN_SUCCESS) {
+          toast({
+            description: "Signed in successfully",
+            status: 'success',
+            duration: 2000,
+            isClosable: true,
+          })
+          navigate("/", { replace: true });
+        } else{
+          toast({
+            description: "Please Signup First",
+            status: 'error',
+            duration: 2000,
+            isClosable: true,
+
+          })
+        }
+        
+      });
     }
   };
 
-  const GoTo = (path) => {
-    console.log("path", path);
-    navigateTo(path);
-  };
-
-  const HandleChange = (evt) => {
-    let { name, value } = evt.target;
-    setFormData({
-      ...formData,
-      [name]: value,
-    });
-  };
-
   return (
-    <>
-      <Flex
-      minH={"100vh"}
-      align={"center"}
-      justify={"center"}
-      bg={useColorModeValue("gray.50", "gray.800")}
-    >
-      <Stack spacing={8} mx={"auto"} maxW={"lg"} py={12} px={6}>
-        <Stack align={"center"}>
-          <Heading fontSize={"4xl"}>Sign In</Heading>
-          <Text fontSize={"lg"} color={"gray.600"}></Text>
-        </Stack>
-        <Box
-          rounded={"lg"}
-          bg={useColorModeValue("white", "gray.700")}
-          boxShadow={"lg"}
-          p={8}
-          bgColor="#f0f1f7 "
-        >
-          <Stack spacing={4}>
-            <FormControl id="email">
-              <FormLabel>Email address</FormLabel>
-              <Input
-                type="email"
-                name="email"
-                borderColor={"grey"}
-                value={formData.email}
-                onChange={HandleChange}
-              />
-            </FormControl>
-            <FormControl id="password">
-              <FormLabel>Password</FormLabel>
-              <Input
-                type="password"
-                name="password"
-                borderColor={"grey"}
-                value={formData.password}
-                onChange={HandleChange}
-              />
-            </FormControl>
-            <Stack spacing={10}>
-              <Stack
-                direction={{ base: "column", sm: "row" }}
-                // align={"start"}
-                justify={"space-between"}
-              >
-                <Checkbox borderColor={"grey"}>Remember me</Checkbox>
-                <Link color={"blue.400"}>Forgot password?</Link>
-              </Stack>
-              <Button
-                bg={"blue.400"}
-                color={"white"}
-                _hover={{
-                  bg: "blue.500",
-                }}
-                onClick={Login}
-              >
-                Sign in
-              </Button>
-            </Stack>
-            <Stack pt={6}>
-              <Text align={"center"}>
-                Don't have a account?{" "}
-                <RouterLink to="/signup">
-                <Link color={"blue.400"} onClick={signUppage}>
-                  Signup
-                </Link>
-                </RouterLink>
-              </Text>
-            </Stack>
-          </Stack>
+
+    <Box bgColor={'#faf8f8'} borderRadius={'10px'} h='460px' width="420px" p='15px' m='auto' boxShadow='rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px' mb='50px'>
+        <Box>
+          <Heading textAlign="center" mt='50px'>
+            Welcome Back
+          </Heading>
         </Box>
-      </Stack>
-    </Flex>
-    </>
+
+        <Box mx="auto" maxW="md" py="6">
+          <Stack spacing={4}>
+            <Box>
+              <FormControl>
+                <FormLabel fontWeight="hairline">Email address *</FormLabel>
+                <Input
+                  focusBorderColor="black"
+                  errorBorderColor="red.300"
+                  type="email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  size="lg"
+                />
+              </FormControl>
+            </Box>
+            <Box>
+              <FormControl>
+                <FormLabel fontWeight="hairline">Password *</FormLabel>
+                <Input
+                  focusBorderColor="black"
+                  errorBorderColor="red.300"
+                  type="password"
+                  size="lg"
+                 
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                 
+                />
+                 
+              </FormControl>
+            </Box>
+          </Stack>
+          <Box paddingTop={{base: "30px", lg: "50px"}} textAlign="center">
+            Don't have a account yet?{" "}
+            <Link color="rgb(9, 97, 228)" href="signup">
+              Sign Up
+            </Link>
+          </Box>
+
+          <Box display='flex'
+    alignItems='center'
+    justifyContent='center'>
+          <Button
+            bgColor={'blue.500'}
+            m='auto'
+            mt='5px'
+            w='40%'
+            fontSize={'18px'}
+            color={'white'}
+            onClick={loginHandler}
+            _hover={{bgColor:'green'}}
+          >
+            Sign In
+          </Button>
+          </Box>
+     
+        </Box>
+    </Box>
   );
 };
 

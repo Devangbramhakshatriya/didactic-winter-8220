@@ -23,7 +23,6 @@ export default function Product() {
       {/* sort and filter container */}
       <div className="product-filters-container">
         <Filter />
-        <img className="product-logo" src={logo} alt=''/>
       </div>
       
       <div>
