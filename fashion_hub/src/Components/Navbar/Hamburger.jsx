@@ -6,24 +6,10 @@ import {
   useDisclosure,
   Stack,
   Text,
-  Container,
-  Image,
-  Link,
-  Button
 } from '@chakra-ui/react';
-import {
-  FaUserCircle,
-  FaUser,
-  FaTruckMoving,
-  FaUserPlus,
-  FaRegUser,
-  FaSignOutAlt,
-} from "react-icons/fa";
 
 import { HamburgerIcon, CloseIcon } from '@chakra-ui/icons';
-import Logo from "./images/fashionHub.png";
 import "./Navbar.css";
-import SignIn from '../Login/SignIn';
 import { useNavigate } from "react-router-dom";
 
 
@@ -56,22 +42,6 @@ const HamburgerMenu = () => {
                 onClick={toggleMenu}
                 display={{ base: 'block', md: 'none' }}
             />
-        
-        
-            {/* <Box width="20vw" border="1px solid red">
-                <Button
-                  display={{ base: "flex", md: "inline-flex" }}
-                  color={"black"}
-                  fontWeight={{ lg: "bold", md: "bold" }}
-                  variant={"link"}
-                  onClick={() => GoTo("/SignIn")}
-                  gap={2}
-                  fontSize={{ xl: "25px", lg: "16px", md: "13px", base: "20px" }} 
-                  >
-                  <FaUserCircle color="black" />
-              
-                </Button>
-            </Box> */}
         </Flex>         
            
       <Box

@@ -1,6 +1,10 @@
-import React from 'react'
-import { Flex, Container, Center, Box, Menu,MenuItem, Avatar, AvatarBadge, Heading,} from "@chakra-ui/react";
-import insta from "./images/640px-Instagram_icon.png";
+import React,{useState,useEffect} from 'react'
+import debounce from 'lodash/debounce'; 
+import { getProduct } from '../../Redux/ProductRedux/action';
+import MiniCard from '../Product/miniCard';
+import { useDispatch, useSelector } from 'react-redux';
+import { Box, Heading, Input, Spinner } from '@chakra-ui/react';
+import { Flex, Container, Center, Menu,MenuItem, Avatar, AvatarBadge,} from "@chakra-ui/react";
 import {BiChevronDown} from 'react-icons/bi';
 import {FaFacebookF} from 'react-icons/fa'
 import {BsInstagram} from 'react-icons/bs'
@@ -17,7 +21,6 @@ import {
     MenuList,
     Stack
 } from "@chakra-ui/react";
-import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import { ChevronDownIcon, ChevronUpIcon,HamburgerIcon } from '@chakra-ui/icons';
 import Mens_Image from "./images/Mens_image.webp";
 import womens_Image from "./images/womens_image.webp";
@@ -27,20 +30,50 @@ import {
     Button,
     
 } from "@chakra-ui/react";
-import {
-    FaUserCircle,
-    FaUser,
-    FaTruckMoving,
-    FaUserPlus,
-    FaRegUser,
-    FaSignOutAlt,
-} from "react-icons/fa";
+
 import { BsGift, BsFillCartFill } from "react-icons/bs";
 import { useNavigate } from "react-router-dom";
 import { useRef } from 'react';
 
 
 const Navbar = () => {
+    const [searchQuery, setSearchQuery] = useState("");
+    const [isInputVisible, setIsInputVisible] = useState(false);
+    const dispatch = useDispatch();
+    const products = useSelector((store) => {
+     return store.product.product;
+   });
+ 
+   const debouncedGetProduct = debounce((searchQuery) => {
+     let obj = {
+       params: {
+         q: searchQuery,
+       }
+     };
+     dispatch(getProduct(obj));
+   }, 300); 
+ 
+   const handleSearchClick = () => {
+    if (isInputVisible) {
+        console.log("Search query:", searchQuery);
+        setSearchQuery("");
+        setIsInputVisible(false);
+      } else {
+        setIsInputVisible(true);
+      }
+  };
+
+
+ const handleSearch = (event) => {
+   const searchValue = event.target.value;
+   setSearchQuery(searchValue);
+   debouncedGetProduct(searchValue);
+   };
+ 
+   useEffect(() => {
+     debouncedGetProduct(searchQuery);
+   }, [searchQuery]);
+
     const { isOpen:menu1, onOpen:menu1Open, onClose:menu1Close } = useDisclosure()
     const { isOpen, onOpen, onClose} = useDisclosure();
     const firstField = React.useRef();
@@ -49,13 +82,6 @@ const Navbar = () => {
         console.log("path", path);
         navigateTo(path);
     };
-    const overlayRef = useRef();
-    const openSearch = () => {
-        overlayRef.current.style.width = '100%';
-    };
-    const closeSearch = () => {
-        overlayRef.current.style.width = '0%';
-      };
 
 
   return (
@@ -100,7 +126,7 @@ const Navbar = () => {
                                     onMouseEnter={menu1Open}
                                     onMouseLeave={menu1Close}
                                 >
-                                    Mens {menu1Open ? <ChevronUpIcon /> : <ChevronDownIcon />}
+                                    Mens {menu1 ? <ChevronUpIcon /> : <ChevronDownIcon />}
                                 </MenuButton>
                                 <MenuList onMouseEnter={menu1Open} onMouseLeave={menu1Close}>
                                     <Box style={{width:"70vw", height:"70vh"}}>
@@ -215,7 +241,7 @@ const Navbar = () => {
                         </div>
                     </Container>
                     <Container height="80%" m={'auto'}>
-                        <Flex justify={"space-between"} ml="34%">
+                        <Flex justify={"space-between"} ml="45%">
 
                             <Stack
                                 flex={{ base: 1, md: 0 }}
@@ -223,14 +249,11 @@ const Navbar = () => {
                                 direction={"row"}
                                 
                                 >
-                                <Button variant={'unstyled'}   fontSize={'22px'} onClick={openSearch} >
+                                <Button variant={'unstyled'} fontSize={'22px'} onClick={handleSearchClick}>
                                     <BsSearch/>
                                 </Button>
                                 <Button onClick={() => GoTo("/SignIn")} variant={'unstyled'}   fontSize={'24px'} fontWeight={'500'}>
                                     <BsPerson/>
-                                </Button>
-                                <Button variant={'unstyled'} marginLeft={'-10px'}   fontSize={'24px'}>
-                                    <AiOutlineStar/>
                                 </Button>
                                 <Link to='/cart'>
                                 <Button
@@ -251,32 +274,25 @@ const Navbar = () => {
                         </Flex>
                     </Container>
                 </Flex>
-                <div ref={overlayRef} class='overlay'>
-                    <button class='close-button' onClick={closeSearch}>
-                    &times;
-                    </button>
-                    <div class='overlay-content'>
-                    <form>
-                        <input
-                        type='search'
-                        placeholder='Search Fashion Hub.com...'
-                        className='search-input'
-                        />
-                        <button
-                        className='search-button'
-                        onClick={() => {
-                            console.log('Hi there');
-                            /* Your search logic here */
-                        }}
-                        >
-                        Go
-                        </button>
-                        <p className='search-text'>
-                        Search your newest trends 
-                        </p>
-                    </form>
-                </div>
-                </div>
+
+
+                <Box className='overlay' w='300px' float={'right'} position={'sticky'} mr='40px'>
+                    {isInputVisible && (
+                    <Input
+                    type="text"
+                    value={searchQuery}
+                    onChange={handleSearch}
+                    placeholder="Enter search query"
+                    />
+                    )}
+                       <Box w='300px' position={'absolute'}bgColor={"#ffffff"} maxHeight={'400px'} overflowY={'scroll'}>
+                       {searchQuery !== "" && products.length > 0 ? (
+                        products.map((element) => <MiniCard key={element.id} product={element} />)
+                        ) : (
+                        <Box></Box>
+                        )}
+                       </Box>
+                </Box>
             </div>
         </div>
     </>

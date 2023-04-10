@@ -23,7 +23,7 @@ function Home() {
 
     const dispatch = useDispatch();
 
-    console.log(products, "8");
+    // console.log(products, "8");
 
     useEffect(() => {
         dispatch(getHome());
@@ -31,7 +31,7 @@ function Home() {
     return (
         <>
         {/* <Navbar/> */}
-        <Box className="main_home_box">
+        <Box className="main_home_box" mb='100px'>
             <Box className="top_banner_box" m="auto" w="100%">
                 <Image src="kooves banner.png" m="auto" w="90%" p="5%" />
             </Box>

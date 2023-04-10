@@ -5,7 +5,6 @@ export default function ProductCard({product}) {
   return (
     <div style={{width:"315px",height:"529px",overflow:"hidden",textAlign:"left",
     padding:"10px",margin:"auto",}}>
-      
       <Link to={`/product/${product.id}`}>
       <img style={{width:"295px", height:"395px",margin:"auto"}} src={product.image} alt={product.name}/>
       </Link>

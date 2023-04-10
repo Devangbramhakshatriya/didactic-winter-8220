@@ -1,4 +1,4 @@
-import { Box, Text, extendTheme, Button, Image } from "@chakra-ui/react";
+import { Box, Text, extendTheme, Button, Image, Heading } from "@chakra-ui/react";
 import CartCard from "./CartCard";
 import { BsPencil } from "react-icons/bs"
 import { FaShippingFast } from "react-icons/fa"
@@ -67,20 +67,22 @@ function Cart() {
         setDartData(c)
     }
     return (
-        <Box >
+        <>
             <Box>
-                <Text fontFamily="SF-Heading-font" fontSize={["22px", "25px", "28px", "30px", "35px", "35px"]}>Shopping Cart</Text>
+                <Heading fontSize={["22px", "25px", "28px", "30px", "35px", "35px"]}>Shopping Cart</Heading>
                 <Text mt="20px">Home - our Shopping Cart</Text>
             </Box>
-            <Box mt="30px">
+            <Box display={['block','block','block','flex','flex']} w='95%' justifyContent={'space-between'} m='auto'>
+            <Box mt="30px" w={['100%',"100%","80%","70%","70%"]}>
                 {
                     cartData.length > 0 ? cartData.map((e, i) => (
                         <CartCard key={e.id} data={e} i={i} handleDicrement={handleDicrement} handleIncrement={handleIncrement} deleteCart={deleteCart} />
-                    )) : <h1>No Data in cart</h1>
+                    )) : <Heading>No Data in cart</Heading>
                 }
 
             </Box>
-            <Box mt="40px" w={["90%", "40%", "35%", "25%", "20%", "20%"]} ml={["2px", "200px", "400px", "700px", "1000px", "1000px"]}>
+            <Box mt="50px" w={["90%", "40%", "35%", "25%", "25%", "25%"]} bgColor={'#faf5f5'} borderRadius={'10px'} h='250px' p='10px'
+            boxShadow='rgba(0, 0, 0, 0.25) 0px 0.0625em 0.0625em, rgba(0, 0, 0, 0.25) 0px 0.125em 0.5em, rgba(255, 255, 255, 0.1) 0px 0px 0px 1px inset'>
                 <Box display="flex" borderBottom="1px solid gray" justifyContent="space-between">
                     <Box>
                         <BsPencil size="30px" />
@@ -107,7 +109,7 @@ function Cart() {
                 </Box>
 
                 <Link to="/buynow">
-                    <Button w="100%" bg="black" color="black" display="flex" justifyContent="space-between" borderRadius="0" mt="30px">
+                    <Button w="100%" bg="lightgrey" color="black" display="flex" justifyContent="space-between" borderRadius="0" mt="30px">
                         <Box>
                             <Text >Place Order</Text>
 
@@ -120,7 +122,8 @@ function Cart() {
                     </Button>
                 </Link>
             </Box>
-        </Box>
+            </Box>
+        </>
     )
 }
 export default Cart;
