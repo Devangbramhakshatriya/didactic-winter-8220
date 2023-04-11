@@ -1,13 +1,12 @@
-# didactic-winter-8220
-<img width="250px" src="https://cdn.shopify.com/s/files/1/0677/1464/6315/files/koovs_final_logo.svg" />
+<h1 align="center">Koovs.com Clone : Fashionhub.com</h1>
 
-# KOOVS
+<h2 align="center"> KOOVS (Online clothes purchasing platform) is an React application designed to provide customers with a personalized easy-to-utilize user experience for purchasing clothes online. It stores customers' personal data and orders.</h2>
 
-> KOOVS (Online clothes purchasing platform) is an React application designed to provide customers with a personalized easy-to-utilize user experience for purchasing clothes online. It stores customers' personal data and orders.
+<h3 align="center"> It has 5 modules Admin, User,Products, Add to Cart, Checkout.</h3>
 
-> It has 5 modules Admin, User,Products, Add to Cart, Checkout.
+<h3 align="center"> KOOVS application was built during the construct week at [Masai School](https://masaischool.com/). Completed the project in five days with a team of Four aspiring developers.</h3>
 
-> KOOVS application was built during the construct week at [Masai School](https://masaischool.com/). Completed the project in five days with a team of Four aspiring developers.
+### 🔗 Live Deployed URL: https://wonderful-bavarois-944f05.netlify.app/
 
 # Features
 
@@ -24,6 +23,46 @@
 - HTML
 - CSS
 - Git & GitHub
+
+<h3>Fashionhub Homepage Screenshot</h3>
+
+![Screenshot (89)](https://user-images.githubusercontent.com/107989752/231111577-fac338bf-7ccd-4fc3-a748-68dacb50079a.png)
+
+<br />
+<h3>Fashionhub product Screenshot</h3>
+
+![Screenshot (90)](https://user-images.githubusercontent.com/107989752/231112198-56fd9d37-1f35-4313-82ec-8bf647416f78.png)
+
+<br/>
+
+![Screenshot (91)](https://user-images.githubusercontent.com/107989752/231112259-6aec8c7c-4534-4bf5-800e-f16f6dada2c2.png)
+<br />
+
+<h3>Fashionhub single product Screenshot</h3>
+
+![Screenshot (92)](https://user-images.githubusercontent.com/107989752/231112992-8c2539dd-f37d-472e-97e9-6656b866ba57.png)
+
+
+<br/>
+
+<h3>Fashionhub Signin/Signup Screenshot</h3>
+
+![Screenshot (97)](https://user-images.githubusercontent.com/107989752/231112482-bb715d29-b823-4074-bfc4-506f629e3606.png)
+
+<br/>
+
+![Screenshot (98)](https://user-images.githubusercontent.com/107989752/231112528-f0115d9a-4fe8-46c5-89b2-805ee048e793.png)
+
+<br />
+
+
+
+
+<br />
+
+
+
+
 
 # Modules
 
