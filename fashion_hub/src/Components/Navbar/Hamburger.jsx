@@ -10,18 +10,11 @@ import {
 
 import { HamburgerIcon, CloseIcon } from '@chakra-ui/icons';
 import "./Navbar.css";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
-
-const links = [
-  { name: 'Mens', href: '/mens' },
-  { name: 'Womens', href: '/womens' },
-  { name: 'Shoes', href: '/shoes' },
-];
 
 const HamburgerMenu = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
-  const [menuLinks, setMenuLinks] = useState(links);
   const navigateTo = useNavigate();
   const toggleMenu = () => {
     isOpen ? onClose() : onOpen();
@@ -34,7 +27,7 @@ const HamburgerMenu = () => {
   return (
     <>
         
-        <Flex justify={'space-between'} bgColor="#e5e5df" marginBottom={20}>
+        <Flex justify={'space-between'} bgColor="#ffffff" mb='15px'>
             <IconButton
                 aria-label="Open Menu"
                 size="lg"
@@ -45,56 +38,103 @@ const HamburgerMenu = () => {
         </Flex>         
            
       <Box
-        bg="white"
+        bg="#eeeeee"
         px={2}
         py={4}
         pos="fixed"
         top={0}
         left={0}
-        w="60%"
+        w="50%"
         h="60vh"
         zIndex={20}
         display={{ base: isOpen ? 'block' : 'none', md: 'none' }}
       >
-        <Flex justify="space-between" align="center" mb={8} >
+        <Flex justify="space-between" textAlign={'left'} mb={4} >
           <Box>
-            <Text fontSize="2xl" fontWeight="bold">Menu</Text>
+            <Text fontSize="2xl" fontWeight="bold" p='10px'>Menu</Text>
           </Box>
           <IconButton
             aria-label="Close Menu"
+            variant={'unstyled'}
             size="lg"
             icon={<CloseIcon />}
             onClick={onClose}
           />
         </Flex>
 
-        <Stack spacing={3}>
-          {menuLinks.map((link) => (
+        <Stack spacing={3} textAlign={'left'} p='10px'>
+            <Link to='/product'>
             <Text
-              key={link.name}
               fontWeight="bold"
               color="gray.600"
               fontSize="xl"
               onClick={onClose}
-              href={link.href}
             >
-              {link.name}
+              Men
             </Text>
-          ))}
-        </Stack>
+            </Link>
+            <Link to='/product'>
+            <Text
+              fontWeight="bold"
+              color="gray.600"
+              fontSize="xl"
+              onClick={onClose}
+            >
+              Women
+            </Text>
+            </Link>
+            <Link to='/product'>
+            <Text
+              fontWeight="bold"
+              color="gray.600"
+              fontSize="xl"
+              onClick={onClose}
+            >
+              Kids
+            </Text>
+            </Link>
 
-        <Flex justify="center" mt={10}>
-          <Box mr={4}>
-            <Text color="gray.400" fontSize="xl">
+            <Link to='/product'>
+            <Text
+              fontWeight="bold"
+              color="gray.600"
+              fontSize="xl"
+              onClick={onClose}
+            >
+             Shoes
+            </Text>
+            </Link>
+
+            <Link to='/product'>
+            <Text
+              fontWeight="bold"
+              color="gray.600"
+              fontSize="xl"
+              onClick={onClose}
+            >
+              Casuals
+            </Text>
+            </Link>
+
+            <Text
+              fontWeight="bold"
+              color="gray.600"
+              fontSize="xl"
+              onClick={onClose}
+            >
               About Us
             </Text>
-          </Box>
-          <Box>
-            <Text color="gray.400" fontSize="xl">
+
+            <Text
+              fontWeight="bold"
+              color="gray.600"
+              fontSize="xl"
+              onClick={onClose}
+            >
               Contact Us
             </Text>
-          </Box>
-        </Flex>
+        </Stack>
+
       </Box>
     </>
   );

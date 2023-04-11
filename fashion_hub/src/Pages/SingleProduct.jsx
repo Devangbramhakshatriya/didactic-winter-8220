@@ -67,7 +67,7 @@ export default function SingleProduct() {
      <Image m='auto' w={['300px','300px','350px','400px','500px']} src={data.image} alt="" />
      </Box>
 
-     <Box textAlign={'left'} p='10px'>
+     <Box textAlign={'left'} p='10px' >
         <Box display={'flex'} textAlign='left' justifyContent={'space-between'}>
          <Text fontSize={['14px','14px','18px','24px','24px']}>
           {data.name}
@@ -77,7 +77,7 @@ export default function SingleProduct() {
          </Button>
          </Box>
 
-         <Text fontSize={['16px','16px','18px','24px','24px']} fontWeight={'500'}>Rs. {data.price}</Text>
+         <Text fontSize={['16px','16px','18px','22px','22px']} fontWeight={'500'}>Rs. {data.price}</Text>
          <Text style={{color:"grey", fontSize:"14px", lineHeight:"21px"}}>Tax included.</Text>
          <Box style={{margin:"20px 0px 20px 0px"}}>
          <Text style={{color:"", fontSize:"14px", lineHeight:"21px",display:"inline-flex"}}><FaEye style={{margin:"2px 5px 0px 5px",fontSize:"18px"}}/> {n} people are viewing this right now</Text>

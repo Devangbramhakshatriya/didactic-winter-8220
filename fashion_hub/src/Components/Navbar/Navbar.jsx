@@ -135,16 +135,16 @@ const Navbar = () => {
                                                 <Flex justify={"space-between"} style={{padding:"10px"}}>
                                                     <Box style={{fontSize:"12px", fontWeight:"800"}}>
                                                         <MenuItem style={{fontSize:"18px", fontWeight:"600"}}>Clothing</MenuItem>
-                                                        <MenuItem>New In</MenuItem>
                                                         <Link to='/product'>
+                                                        <MenuItem>New In</MenuItem>
                                                         <MenuItem>View All</MenuItem>
-                                                        </Link>
                                                         <MenuItem>T-Shirts</MenuItem>
                                                         <MenuItem>Jackets & Coats</MenuItem>
                                                         <MenuItem>Hoodies & Sweatshirts</MenuItem>
                                                         <MenuItem>Sweatpants</MenuItem>
                                                         <MenuItem>Shorts</MenuItem>
                                                         <MenuItem>Co-ords sets</MenuItem>
+                                                        </Link>
                                                     </Box>
                                                     <Box style={{fontSize:"12px", fontWeight:"600"}}>
                                                         <MenuItem style={{fontSize:"18px", fontWeight:"600"}}>Brand</MenuItem>
@@ -191,6 +191,7 @@ const Navbar = () => {
                                                 <Flex justify={"space-between"} style={{padding:"10px"}}>
                                                     <Box style={{fontSize:"12px", fontWeight:"800"}}>
                                                         <MenuItem style={{fontSize:"18px", fontWeight:"600"}}>Clothing</MenuItem>
+                                                        <Link to='/product'>
                                                         <MenuItem>New In</MenuItem>
                                                         <MenuItem>View All</MenuItem>
                                                         <MenuItem>Lounge & Sleepware</MenuItem>
@@ -204,6 +205,7 @@ const Navbar = () => {
                                                         <MenuItem>T-Shirts</MenuItem>
                                                         <MenuItem>Lagging</MenuItem>
                                                         <MenuItem>Pants</MenuItem>
+                                                        </Link>
                                                     </Box>
                                                     <Box style={{fontSize:"12px", fontWeight:"600"}}>
                                                         <MenuItem style={{fontSize:"18px", fontWeight:"600"}}>Brand</MenuItem>
@@ -286,7 +288,7 @@ const Navbar = () => {
                     />
                     )}
                        <Box w='300px' position={'absolute'}bgColor={"#ffffff"} maxHeight={'400px'} overflowY={'scroll'}>
-                       {searchQuery !== "" && products.length > 0 ? (
+                       {searchQuery!==""&& products.length > 0 ? (
                         products.map((element) => <MiniCard key={element.id} product={element} />)
                         ) : (
                         <Box></Box>

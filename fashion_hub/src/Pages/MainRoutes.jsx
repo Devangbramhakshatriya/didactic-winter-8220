@@ -10,6 +10,7 @@ import Edit from './Edit'
 import PaymentPage from './PaymentPage'
 import Product from './Product'
 import SingleProduct from './SingleProduct'
+import PrivateRoutes from '../Components/Product/PrivateRoutes'
 
 const MainRoutes = () => {
   return <Routes>
@@ -18,9 +19,13 @@ const MainRoutes = () => {
       <Route path='/adminpage' element={<Admin/>}/>
       <Route path='/admin' element={<AdminProduct/>}/>
       <Route path='/product/:id/edit' element={<Edit/>}/>
-      <Route path='/cart' element={<Cart/>}/>
+      <Route path='/cart' element={<PrivateRoutes>
+        <Cart/>
+        </PrivateRoutes>}/>
       <Route path='/signin' element={<SignIn/>}/>
-      <Route path={'/product/:id'} element={<SingleProduct/>}/>
+      <Route path={'/product/:id'} element={<PrivateRoutes>
+        <SingleProduct/>
+      </PrivateRoutes>}/>
       <Route path='/payment' element={<PaymentPage/>}/>
       <Route path='*' element={<h2>404 Page Not Found!</h2>}/>
       <Route path='/buynow' element={<PaymentPage/>}/>

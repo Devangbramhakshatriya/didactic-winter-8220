@@ -43,7 +43,7 @@ const SignIn = () => {
         duration: 5000,
         isClosable: true,
       })
-    }else if(email=='admin@gmail.com' || password=="123"){
+    }else if(email=='admin@gmail.com' && password=="admin"){
       navigate("/admin", { replace: true });
     }
     else if (email && password) {
