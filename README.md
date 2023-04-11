@@ -16,6 +16,10 @@
 - User can register by giving all the details
 - User can order products of its choice
 
+#Admin credentials
+-email: admin@gmail.com
+-password:admin
+
 # Technology used 
 - React
 - Chakra-UI
