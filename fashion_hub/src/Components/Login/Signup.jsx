@@ -67,7 +67,7 @@ const SignUp = () => {
   const toast = useToast()
   const signupHandler = () => {
     dispatch(register(state)).then((r) => {
-      if(state.name=="" || state.email=="" || state.password=="" || state.phone==''){
+      if(state.name==="" || state.email==="" || state.password==="" || state.phone===""){
         toast({
           title: 'invalid credentials',
           description: "Please fill all neccessary fields!",
@@ -99,7 +99,7 @@ const SignUp = () => {
   return (
 <Flex
       minH={"100vh"}
-      mt='-80px'
+      // mt='-80px'
       align={"center"}
       justify={"center"}
     >

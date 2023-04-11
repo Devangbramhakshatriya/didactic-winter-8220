@@ -1,6 +1,6 @@
-import { Box, Text, Image, SimpleGrid } from "@chakra-ui/react"
+import { Box, Text, Image, SimpleGrid, Spinner } from "@chakra-ui/react"
 import { extendTheme } from '@chakra-ui/react'
-import { useEffect } from "react"
+import { useEffect,useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { getHome, getHome_Product } from "../../../Redux/HomeProduct/action"
 // import Navbar from "../../Navbar/Navbar"
@@ -21,12 +21,15 @@ function Home() {
         return store.homeReducer.home;
     });
 
+    const [loading,setLoading]=useState(true);
+
     const dispatch = useDispatch();
 
     // console.log(products, "8");
 
     useEffect(() => {
         dispatch(getHome());
+        setLoading(false);
     }, []);
     return (
         <>
@@ -58,9 +61,13 @@ function Home() {
             <Box className="product_map_box" w="95%" m="auto">
                 <SimpleGrid templateColumns={["repeat(2,1fr)","repeat(3,1fr)","repeat(4,1fr)"]} m="auto">
                     {
-                        products.map((e) => (
-                            <ProductCart key={e.id} image={e.image} image2={e.image2} price={e.price} title={e.title} />
-                        ))
+                    loading?(
+                            <Spinner margin='auto' thickness='4px' speed='0.65s' emptyColor='gray.200' color='blue.500' size='xl' />
+                        ):(
+                            products.map((e) => (
+                                <ProductCart key={e.id} image={e.image} image2={e.image2} price={e.price} title={e.title} />
+                            ))
+                        )
                     }
                     
                 </SimpleGrid>

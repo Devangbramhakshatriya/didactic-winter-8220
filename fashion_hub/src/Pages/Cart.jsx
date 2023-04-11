@@ -1,4 +1,4 @@
-import { Box, Text, extendTheme, Button, Image, Heading } from "@chakra-ui/react";
+import { Box, Text, extendTheme, Button, Image, Heading, useToast } from "@chakra-ui/react";
 import CartCard from "./CartCard";
 import { BsPencil } from "react-icons/bs"
 import { FaShippingFast } from "react-icons/fa"
@@ -6,7 +6,7 @@ import { RiCouponLine } from "react-icons/ri"
 import { FiChevronRight } from "react-icons/fi"
 import { total } from "./CartCard";
 import { useEffect, useState } from "react";
-import { Link as Link } from "react-router-dom"
+import { Link as Link, Navigate, useNavigate } from "react-router-dom"
 const breackpoints = {
     base: "420px",
     sm: "550px",
@@ -18,6 +18,9 @@ const breackpoints = {
 const theme = extendTheme({ breackpoints })
 
 function Cart() {
+    const navigate=useNavigate();
+
+    const toast=useToast();
 
     const [cartData, setDartData] = useState([])
     useEffect(() => {
@@ -28,7 +31,20 @@ function Cart() {
     let t = cartData.reduce((acc, el) => {
         return acc + (el.quantity * el.price)
     }, 0)
-    console.log(t)
+
+    const validateCart=()=>{
+      if(cartData.length===0){
+        toast({
+            title: 'Cart empty',
+            description: "Please add some items in cart to proceed",
+            status: 'error',
+            duration: 2000,
+            isClosable: true,
+          })
+      }else{
+        navigate("/buynow", { replace: true });
+      }
+    }
 
     const handleIncrement = (id) => {
 
@@ -70,14 +86,15 @@ function Cart() {
         <>
             <Box>
                 <Heading fontSize={["22px", "25px", "28px", "30px", "35px", "35px"]}>Shopping Cart</Heading>
-                <Text mt="20px">Home - our Shopping Cart</Text>
             </Box>
-            <Box display={['block','block','block','flex','flex']} w='95%' justifyContent={'space-between'} m='auto'>
+            <Box display={['block','block','block','flex','flex']} w='95%' justifyContent={'space-between'} m='auto' mb='50px'>
             <Box mt="30px" w={['100%',"100%","80%","70%","70%"]}>
                 {
                     cartData.length > 0 ? cartData.map((e, i) => (
                         <CartCard key={e.id} data={e} i={i} handleDicrement={handleDicrement} handleIncrement={handleIncrement} deleteCart={deleteCart} />
-                    )) : <Heading>No Data in cart</Heading>
+                    )) : <Box textAlign={'left'} p='20px'>
+                        <Heading>No Data in cart</Heading>
+                    </Box>
                 }
 
             </Box>
@@ -108,7 +125,7 @@ function Cart() {
 
                 </Box>
 
-                <Link to="/buynow">
+                <Box onClick={validateCart}>
                     <Button w="100%" bg="lightgrey" color="black" display="flex" justifyContent="space-between" borderRadius="0" mt="30px">
                         <Box>
                             <Text >Place Order</Text>
@@ -120,7 +137,7 @@ function Cart() {
                         </Box>
                         <Box><FiChevronRight /></Box>
                     </Button>
-                </Link>
+                </Box>
             </Box>
             </Box>
         </>

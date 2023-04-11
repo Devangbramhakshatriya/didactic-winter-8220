@@ -20,6 +20,10 @@
   .product-filters-container {
     padding-left: 3.2%;
     width: 100%;
+    display: flex;
+    gap:30px;
+    margin-bottom:10px;
+    margin-top:10px
   }
   
   .product-logo {

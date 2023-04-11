@@ -1,5 +1,5 @@
 import axios from "axios";
-import { GET_PRODUCT_SUCCESS, PRODUCT_FAILURE, PRODUCT_REQUEST,POST_PRODUCT_SUCCESS,PATCH_PRODUCT_SUCCESS } from "./actiontypes"
+import { GET_PRODUCT_SUCCESS, PRODUCT_FAILURE, PRODUCT_REQUEST,POST_PRODUCT_SUCCESS,PATCH_PRODUCT_SUCCESS,REMOVE_PRODUCT_SUCCESS } from "./actiontypes"
 
 export const getProductSuccess=(payload)=>{
     return {type:GET_PRODUCT_SUCCESS,payload};
@@ -18,11 +18,14 @@ export const postProductSuccess=()=>{
     return {type:POST_PRODUCT_SUCCESS};
 }
 
+export const removeProductSuccess = (id) => {
+    return { type: REMOVE_PRODUCT_SUCCESS, payload: id };
+  };
+
 export const getProduct=(params)=>(dispatch)=>{
     dispatch(productRequest());
-    axios.get("https://fashion-hub-r5a1.onrender.com/product",params).then((res)=>{
-        dispatch(getProductSuccess(res.data));
-        // console.log(res.data);
+   axios.get("https://fashion-hub-r5a1.onrender.com/product",params).then((res)=>{
+      dispatch(getProductSuccess(res.data));
     }).catch(()=>{
         dispatch(productFailure());
     })
@@ -45,3 +48,12 @@ export const editProduct=(id,newData)=>(dispatch)=>{
         dispatch(productFailure());
     })
 }
+
+export const removeProduct = (id) => (dispatch) => {
+    dispatch(productRequest());
+    axios.delete(`https://fashion-hub-r5a1.onrender.com/product/${id}`).then(() => {
+      dispatch(removeProductSuccess(id));
+    }).catch(() => {
+      dispatch(productFailure());
+    });
+  };
